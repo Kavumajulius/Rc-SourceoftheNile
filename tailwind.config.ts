@@ -12,13 +12,13 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
     extend: {
       fontFamily: {
-        body: ['"Inter"', 'sans-serif'],
-        headline: ['"Syne"', 'sans-serif'],
+        body: ['"Open Sans"', 'sans-serif'],
+        headline: ['"Montserrat"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -67,6 +67,11 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xl: "calc(var(--radius) + 4px)",
+      },
+      boxShadow: {
+        s1: '0 1px 2px rgba(0,0,0,0.06)',
+        s2: '0 6px 24px rgba(0,0,0,0.10)',
       },
       keyframes: {
         'accordion-down': {
