@@ -42,12 +42,11 @@ const LeaderCard = ({ name, role, imageUrl, aiHint, index }: (typeof leaders)[0]
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className="flex flex-col group"
     >
-        <div className="relative w-full overflow-hidden rounded-xl bg-secondary">
+        <div className="relative w-full overflow-hidden rounded-xl bg-secondary aspect-[4/5]">
             <Image
                 src={imageUrl}
                 alt={`Portrait of ${name}`}
-                width={400}
-                height={500}
+                fill
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                 data-ai-hint={aiHint}
             />
@@ -68,9 +67,9 @@ export default function LeadersSection() {
         <Section className="bg-secondary">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">Leaders</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">Leaders</h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     {leaders.map((leader, index) => (
                         <LeaderCard key={leader.name} {...leader} index={index} />
                     ))}

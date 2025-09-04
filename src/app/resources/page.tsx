@@ -19,7 +19,7 @@ export default function ResourcesPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative h-[300px] md:h-[300px] flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative h-[300px] flex items-center justify-center text-center text-white overflow-hidden"
       >
         <motion.div
           className="absolute inset-0"
@@ -39,7 +39,7 @@ export default function ResourcesPage() {
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="text-2xl md:text-4xl font-extrabold tracking-tight"
+            className="text-3xl md:text-4xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -47,7 +47,7 @@ export default function ResourcesPage() {
             Resources
           </motion.h1>
           <motion.p
-            className="mt-2 max-w-2xl mx-auto text-sm md:text-lg text-white/90"
+            className="mt-2 max-w-2xl mx-auto text-base md:text-lg text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
@@ -97,7 +97,7 @@ export default function ResourcesPage() {
                 <Card className="bg-card text-card-foreground overflow-hidden h-full group flex flex-col transition-shadow duration-300 hover:shadow-2xl">
                   <CardContent className="p-6 flex flex-col flex-grow">
                      <LinkIcon className="h-8 w-8 mb-4 text-accent"/>
-                    <h3 className="text-xl font-bold text-primary">
+                    <h3 className="text-lg md:text-xl font-bold text-primary">
                       {link.title}
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground flex-grow">
@@ -124,13 +124,13 @@ export default function ResourcesPage() {
          whileInView={{ opacity: 1 }}
          viewport={{ once: true, amount: 0.5 }}
          transition={{ duration: 1 }}
-        className="py-20 bg-primary text-primary-foreground"
+        className="py-16 md:py-20 bg-primary text-primary-foreground"
       >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-4xl font-bold">
             Stay connected with Rotary’s global network.
           </h2>
-          <p className="mt-4 text-lg text-primary-foreground/80 max-w-xl mx-auto">
+          <p className="mt-4 text-base md:text-lg text-primary-foreground/80 max-w-xl mx-auto">
             Your journey in service and leadership starts here. Join us to make a lasting impact.
           </p>
           <div className="mt-8">

@@ -63,9 +63,9 @@ const AnimatedStat = ({
       transition={{ duration: 0.5 }}
       className="text-center"
     >
-      <Icon className="h-12 w-12 mx-auto text-accent" />
-      <p className="mt-4 text-5xl font-bold">{value}</p>
-      <p className="mt-2 text-muted-foreground text-lg">{label}</p>
+      <Icon className="h-10 w-10 md:h-12 md:w-12 mx-auto text-accent" />
+      <p className="mt-4 text-4xl md:text-5xl font-bold">{value}</p>
+      <p className="mt-2 text-muted-foreground text-base md:text-lg">{label}</p>
     </motion.div>
   );
 };
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
   return (
     <div className="flex flex-col overflow-x-hidden bg-background">
       {/* 1. Hero Banner */}
-      <section className="relative h-[400px] md:h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-[300px] md:h-[400px] flex items-center justify-center text-center text-white overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{ y: "-20%" }}
@@ -108,7 +108,7 @@ export default function ProjectsPage() {
             Our Projects
           </motion.h1>
           <motion.p
-            className="mt-4 max-w-2xl mx-auto text-lg text-white/90"
+            className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
@@ -157,7 +157,7 @@ export default function ProjectsPage() {
       </Section>
 
       {/* 3. Project Cards Grid */}
-      <Section className="py-20 md:py-28">
+      <Section className="py-16 md:py-28">
         <div className="container mx-auto px-4">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
@@ -204,13 +204,13 @@ export default function ProjectsPage() {
       </Section>
 
       {/* 4. Impact Statistics Section */}
-      <Section className="py-20 md:py-28 bg-secondary">
+      <Section className="py-16 md:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold md:text-5xl">
+            <h2 className="text-3xl font-bold md:text-5xl">
               Our Collective Impact
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
               Numbers that tell the story of our commitment.
             </p>
           </div>
@@ -227,12 +227,12 @@ export default function ProjectsPage() {
       </Section>
 
       {/* 5. Call-to-Action Section */}
-      <Section id="join-us" className="py-20 md:py-28 bg-primary text-primary-foreground">
+      <Section id="join-us" className="py-16 md:py-28 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-4xl font-bold">
             Want to be part of our next project?
           </h2>
-          <p className="mt-4 text-lg text-primary-foreground/80 max-w-xl mx-auto">
+          <p className="mt-4 text-base md:text-lg text-primary-foreground/80 max-w-xl mx-auto">
             Join a global network of volunteers making a difference. Your skills, passion, and time can help us create even greater impact.
           </p>
           <div className="mt-8">

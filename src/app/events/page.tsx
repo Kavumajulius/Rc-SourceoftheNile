@@ -30,7 +30,7 @@ export default function EventsPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative h-[350px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative h-[300px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
       >
         <motion.div
           className="absolute inset-0"
@@ -58,7 +58,7 @@ export default function EventsPage() {
             Events
           </motion.h1>
           <motion.p
-            className="mt-4 max-w-2xl mx-auto text-lg text-white/90"
+            className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
@@ -69,10 +69,10 @@ export default function EventsPage() {
       </motion.section>
 
       {/* 2. Upcoming Events Section */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold md:text-5xl">Upcoming Events</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <h2 className="text-3xl font-bold md:text-5xl">Upcoming Events</h2>
+          <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
             Join us for our upcoming meetings, projects, and fellowship events.
           </p>
         </div>
@@ -92,9 +92,9 @@ export default function EventsPage() {
                   <p className="text-lg font-semibold text-primary">{event.date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
                   <p className="text-sm text-muted-foreground">{event.date.getFullYear()}</p>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 p-4 md:p-0">
                   <CardHeader>
-                    <CardTitle className="text-2xl">{event.title}</CardTitle>
+                    <CardTitle className="text-xl md:text-2xl">{event.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="mb-4">{event.summary}</CardDescription>
@@ -125,13 +125,13 @@ export default function EventsPage() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 1 }}
-        className="py-20 bg-accent text-accent-foreground"
+        className="py-16 md:py-20 bg-accent text-accent-foreground"
       >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="text-2xl md:text-4xl font-bold">
             Join us at our next event and make a difference.
           </h2>
-          <p className="mt-4 text-lg text-accent-foreground/80 max-w-xl mx-auto">
+          <p className="mt-4 text-base md:text-lg text-accent-foreground/80 max-w-xl mx-auto">
             Your skills, passion, and time can help us create even greater impact.
           </p>
           <div className="mt-8">

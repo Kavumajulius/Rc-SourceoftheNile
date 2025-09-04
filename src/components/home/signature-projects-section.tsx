@@ -13,13 +13,13 @@ export default function SignatureProjectsSection() {
     return (
         <Section className="bg-foreground text-background">
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-end mb-12">
-                    <div>
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div className="w-full">
                         <p className="text-sm font-bold text-accent">OUR SIGNATURE PROJECTS</p>
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mt-2">Advanced Community Treatments</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mt-2">Advanced Community Treatments</h2>
                         <p className="mt-4 text-muted-foreground max-w-xl">We offer a range of expert-driven services designed to address your unique community needs. Whether you're dealing with health, education, or environmental challenges, we've got you covered.</p>
                     </div>
-                    <div className="hidden md:flex gap-2">
+                    <div className="hidden md:flex gap-2 mt-4 md:mt-0 self-start md:self-end">
                         <Button size="icon" variant="outline" className="rounded-full bg-transparent border-background/50 hover:bg-accent/10"><ArrowRight className="w-5 h-5 rotate-180"/></Button>
                         <Button size="icon" variant="outline" className="rounded-full bg-accent border-accent hover:bg-accent/80"><ArrowRight className="w-5 h-5"/></Button>
                     </div>
@@ -35,7 +35,7 @@ export default function SignatureProjectsSection() {
                     >
                         <Card className="bg-transparent text-background border-background/20 overflow-hidden h-full group transition-all duration-300 hover:shadow-s2 hover:-translate-y-1 rounded-xl">
                         <CardContent className="p-5">
-                            <h3 className="text-2xl font-bold">{project.title}</h3>
+                            <h3 className="text-xl md:text-2xl font-bold">{project.title}</h3>
                             <p className="mt-2 text-sm text-muted-foreground line-clamp-3 h-16">{project.description}</p>
                             <div className="p-0 mt-4 text-accent font-bold flex items-center text-sm">
                                 Learn More <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>

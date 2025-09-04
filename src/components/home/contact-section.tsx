@@ -13,12 +13,12 @@ export default function ContactSection() {
             <div className="container mx-auto px-4">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left Column: Text and Icons */}
-                    <div className="text-left">
+                    <div className="text-center lg:text-left">
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
-                            className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-8"
+                            className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-8"
                         >
                             Ready to Make a Difference? <br />
                             <span className="text-muted-foreground">Join Us Today.</span>
@@ -27,7 +27,7 @@ export default function ContactSection() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                            className="flex items-center space-x-4"
+                            className="flex items-center space-x-4 justify-center lg:justify-start"
                         >
                             <div className="flex items-center justify-center h-16 w-16 rounded-full bg-background shadow-md">
                                 <HandHeart className="h-8 w-8 text-primary" />
@@ -42,7 +42,7 @@ export default function ContactSection() {
                     </div>
 
                     {/* Right Column: Cards and Button */}
-                    <div className="relative flex items-center justify-center lg:justify-end h-[400px]">
+                    <div className="relative flex items-center justify-center lg:justify-end h-[400px] lg:h-[400px] mt-12 lg:mt-0">
                         {/* Impact Card */}
                         <motion.div 
                             initial={{ opacity: 0, x: 50, rotate: 5 }}
@@ -63,7 +63,7 @@ export default function ContactSection() {
                             initial={{ opacity: 0, y: 50, scale: 0.9 }}
                             whileInView={{ opacity: 1, y: 0, scale: 1 }}
                             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-                            className="relative w-72 h-80 rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative w-64 h-80 md:w-72 md:h-80 rounded-2xl overflow-hidden shadow-2xl"
                         >
                             <Image src="https://picsum.photos/400/500?random=99" alt="Community members" fill className="object-cover" data-ai-hint="happy people" />
                         </motion.div>
@@ -73,9 +73,9 @@ export default function ContactSection() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
-                            className="absolute -right-8 bottom-8"
+                            className="absolute -right-4 md:-right-8 bottom-8"
                         >
-                            <Button size="lg" className="rounded-full h-24 w-24 flex-col bg-primary hover:bg-primary/90 shadow-2xl text-lg font-bold">
+                            <Button size="lg" className="rounded-full h-20 w-20 md:h-24 md:w-24 flex-col bg-primary hover:bg-primary/90 shadow-2xl text-lg font-bold">
                                 Join <ArrowRight className="h-5 w-5 mt-1" />
                             </Button>
                         </motion.div>

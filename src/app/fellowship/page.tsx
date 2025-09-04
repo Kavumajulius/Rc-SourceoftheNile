@@ -24,7 +24,7 @@ export default function FellowshipPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="relative h-[350px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative h-[300px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
       >
         <motion.div
           className="absolute inset-0"
@@ -52,7 +52,7 @@ export default function FellowshipPage() {
             Fellowships
           </motion.h1>
           <motion.p
-            className="mt-4 max-w-2xl mx-auto text-lg text-white/90"
+            className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
@@ -63,10 +63,10 @@ export default function FellowshipPage() {
       </motion.section>
 
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 md:py-20">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold md:text-5xl">Fellowship Updates</h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <h1 className="text-3xl font-bold md:text-5xl">Fellowship Updates</h1>
+          <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
             Stay connected with highlights from our recent gatherings.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function FellowshipPage() {
             <Card key={index} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                  <CardTitle className="text-2xl">{update.title}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl">{update.title}</CardTitle>
                   <p className="text-sm text-muted-foreground mt-1 sm:mt-0">{update.date}</p>
                 </div>
               </CardHeader>

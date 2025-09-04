@@ -11,8 +11,8 @@ const Stat = ({ value, label, description }: { value: string, label: string, des
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
     >
-        <p className="text-5xl font-bold text-foreground">{value}</p>
-        <p className="mt-1 text-lg font-semibold text-foreground">{label}</p>
+        <p className="text-4xl md:text-5xl font-bold text-foreground">{value}</p>
+        <p className="mt-1 text-base md:text-lg font-semibold text-foreground">{label}</p>
         <p className="mt-1 text-sm text-muted-foreground">{description}</p>
     </motion.div>
 );
@@ -33,7 +33,7 @@ export default function FellowshipSection() {
                         </motion.div>
 
                         <motion.h2 
-                            className="text-4xl md:text-5xl font-bold tracking-tighter"
+                            className="text-3xl md:text-5xl font-bold tracking-tighter"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -42,7 +42,7 @@ export default function FellowshipSection() {
                         </motion.h2>
 
                         <motion.p 
-                            className="text-muted-foreground text-lg"
+                            className="text-muted-foreground text-base md:text-lg"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}

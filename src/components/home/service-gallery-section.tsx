@@ -1,3 +1,4 @@
+
 "use client";
 import { motion } from "framer-motion";
 import { Users, Heart, Stethoscope, BookOpen, TreePine, Lightbulb, Globe, Award } from "lucide-react";
@@ -18,24 +19,24 @@ const cardVariants = {
 
 export default function ServiceGallerySection() {
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-16 md:py-20 bg-gray-100">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Our Service in Action
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Discover how Rotary Club Source of the Nile transforms communities through dedicated service.
           </p>
         </motion.div>
 
         {/* Grid Layout matching the reference image */}
-        <div className="grid grid-cols-12 grid-rows-8 gap-4 h-[800px] md:h-[1000px]">
+        <div className="grid grid-cols-12 grid-rows-6 md:grid-rows-8 gap-4 h-[1200px] md:h-[1000px]">
           
           {/* Top Left - Community Outreach (2x2) */}
           <motion.div
@@ -44,7 +45,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-2 bg-white rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-12 md:col-span-3 row-span-1 md:row-span-2 bg-white rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex flex-col">
@@ -72,7 +73,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-4 bg-gradient-to-br from-purple-900 to-blue-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
+            className="col-span-12 md:col-span-3 row-span-2 md:row-span-4 bg-gradient-to-br from-purple-900 to-blue-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
             whileHover={{ scale: 1.02 }}
           >
             <div 
@@ -115,7 +116,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-6 md:col-span-3 row-span-1 md:row-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex flex-col justify-center text-white">
@@ -134,7 +135,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-2 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-12 md:col-span-3 row-span-1 md:row-span-2 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex flex-col justify-center text-white">
@@ -150,7 +151,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-12 md:col-span-3 row-span-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex items-center justify-center text-white">
@@ -165,7 +166,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
+            className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
             whileHover={{ scale: 1.02 }}
           >
             <div 
@@ -192,7 +193,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
+            className="col-span-6 md:col-span-2 row-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
             whileHover={{ scale: 1.02 }}
           >
             <div 
@@ -208,7 +209,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-4 row-span-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-12 md:col-span-4 row-span-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex items-center text-white">
@@ -223,7 +224,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-2 row-span-2 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+            className="col-span-6 md:col-span-2 row-span-1 md:row-span-2 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
             whileHover={{ scale: 1.02 }}
           >
             <div className="h-full p-6 flex flex-col justify-center text-white">
@@ -278,7 +279,7 @@ export default function ServiceGallerySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
+            className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
             whileHover={{ scale: 1.02 }}
           >
             <div 

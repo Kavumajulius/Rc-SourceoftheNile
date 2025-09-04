@@ -9,35 +9,35 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="relative bg-background overflow-hidden">
-      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-16">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 pt-16 md:pt-24 pb-12 md:pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left: Main Typography */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1
-              className="font-black leading-tight tracking-tighter text-foreground text-5xl lg:text-7xl"
+              className="font-black leading-tight tracking-tighter text-foreground text-4xl md:text-5xl lg:text-7xl"
             >
               Service in Action, <br />
               <span className="text-muted-foreground/50">Impact in Motion.</span>
             </h1>
 
             <p
-              className="text-lg text-muted-foreground leading-relaxed max-w-md"
+              className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md mx-auto lg:mx-0"
             >
               We're committed to creating positive change in our community and beyond.
               Our dedicated members work together on impactful projects that address
               local and global challenges along the Source of the Nile.
             </p>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <Button
                     size="lg"
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 font-semibold text-lg transition-all group"
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-3 font-semibold text-base md:text-lg transition-all group"
                 >
                     Join Today{" "}
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -45,7 +45,7 @@ export default function HeroSection() {
                  <Button
                     size="lg"
                     variant="outline"
-                    className="rounded-full px-8 py-3 font-semibold text-lg transition-all group"
+                    className="rounded-full px-8 py-3 font-semibold text-base md:text-lg transition-all group hidden sm:flex"
                 >
                     <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                     See Our Work
@@ -55,7 +55,7 @@ export default function HeroSection() {
 
           {/* Right: Large Image Card */}
           <motion.div 
-            className="relative flex items-center justify-center h-[450px]"
+            className="relative flex items-center justify-center h-[300px] md:h-[450px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
@@ -75,11 +75,12 @@ export default function HeroSection() {
       </div>
       
       {/* New Full-Width Image Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <motion.div
-            className="relative w-full h-[540px] rounded-[20px] overflow-hidden shadow-2xl"
+            className="relative w-full h-[300px] md:h-[540px] rounded-[20px] overflow-hidden shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
         >
             <Image

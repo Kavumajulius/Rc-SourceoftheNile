@@ -34,7 +34,7 @@ export default function LeadershipPage() {
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="text-2xl md:text-4xl font-extrabold tracking-tight"
+            className="text-3xl md:text-4xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -42,7 +42,7 @@ export default function LeadershipPage() {
             Past Presidents
           </motion.h1>
           <motion.p
-            className="mt-2 max-w-2xl mx-auto text-sm md:text-lg text-white/90"
+            className="mt-2 max-w-2xl mx-auto text-base md:text-lg text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
@@ -58,7 +58,7 @@ export default function LeadershipPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8 }}
-        className="py-16 md:py-24"
+        className="py-16"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -91,7 +91,7 @@ export default function LeadershipPage() {
                     transition={{ duration: 0.7 }}
                     className={`flex items-center justify-center ${index % 2 === 0 ? 'md:order-2 md:justify-start' : 'md:order-1 md:justify-end'}`}
                   >
-                    <div className="relative w-48 h-48">
+                    <div className="relative w-40 h-40 md:w-48 md:h-48">
                       <Image
                         src={president.imageUrl}
                         alt={`Portrait of ${president.name}`}
@@ -109,7 +109,7 @@ export default function LeadershipPage() {
                     transition={{ duration: 0.7 }}
                     className={`mt-6 md:mt-0 text-center md:text-left ${index % 2 === 0 ? 'md:order-1 md:text-right' : 'md:order-2 md:text-left'}`}
                   >
-                    <p className="text-2xl font-bold">{president.name}</p>
+                    <p className="text-xl md:text-2xl font-bold">{president.name}</p>
                     <p className="text-accent font-semibold">{president.term}</p>
                     <p className="mt-2 text-muted-foreground">{president.bio}</p>
                   </motion.div>
