@@ -1,55 +1,26 @@
 
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Section from "./section";
 
-const AnimatedStat = ({ value, label, icon: Icon, suffix }: { value: string, label: string, icon?: React.ElementType, suffix?: string }) => {
+const Stat = ({ value, label, description }: { value: string, label: string, description: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-  const [displayValue, setDisplayValue] = useState("0");
-
-  useEffect(() => {
-    if (isInView) {
-      const end = parseInt(value.replace(/[^0-9]/g, ''), 10);
-      if (isNaN(end)) return;
-      
-      let start = 0;
-      const duration = 1200;
-      const frameRate = 60;
-      const totalFrames = Math.round(duration / (1000 / frameRate));
-      let currentFrame = 0;
-
-      const counter = setInterval(() => {
-        currentFrame++;
-        const progress = Math.pow(currentFrame / totalFrames, 0.5); // Ease-out
-        const currentNum = Math.round(end * progress);
-
-        if (currentNum >= end) {
-          clearInterval(counter);
-          setDisplayValue(value);
-        } else {
-          setDisplayValue(currentNum.toLocaleString());
-        }
-      }, 1000 / frameRate);
-    }
-  }, [isInView, value]);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="text-left"
     >
-      <p className="text-5xl lg:text-7xl font-bold text-foreground">
-        {displayValue}
-        {suffix && <span className="text-accent">{suffix}</span>}
-      </p>
-      <p className="mt-2 text-muted-foreground text-sm font-semibold tracking-wider">{label}</p>
+      <p className="text-5xl lg:text-6xl font-bold text-foreground">{value}</p>
+      <p className="mt-2 text-md font-semibold text-foreground">{label}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{description}</p>
     </motion.div>
   );
 };
@@ -57,26 +28,46 @@ const AnimatedStat = ({ value, label, icon: Icon, suffix }: { value: string, lab
 
 export default function ImpactStatsSection() {
     return (
-        <Section className="bg-background">
+        <Section className="bg-secondary">
             <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="max-w-md">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">Our Impact by the Numbers</h2>
-                <p className="mt-4 text-muted-foreground text-lg">We measure our success by the lives we touch and the communities we strengthen.</p>
-                <div className="mt-6 flex gap-2">
-                    {Array(3).fill(0).map((_, i) => (
-                    <Image key={i} src={`https://picsum.photos/100/100?random=${10+i}`} alt="member" width={60} height={60} className="rounded-full border-2 border-white"/>
-                    ))}
-                    <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold text-xl">
-                    +
+                <div className="grid md:grid-cols-2 gap-16 items-center">
+                    <motion.div 
+                        className="relative h-[450px] w-full rounded-xl overflow-hidden"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <Image 
+                            src="https://picsum.photos/600/800?random=60"
+                            alt="Community Impact"
+                            fill
+                            className="object-cover"
+                            data-ai-hint="community impact"
+                        />
+                    </motion.div>
+                    <div className="flex flex-col justify-center h-full">
+                        <motion.h2 
+                            className="text-4xl md:text-5xl font-bold tracking-tighter"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        >
+                            Our Impact by the Numbers
+                        </motion.h2>
+                        <motion.p 
+                            className="mt-4 text-muted-foreground text-lg max-w-md"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                        >
+                            We measure our success by the lives we touch and the communities we strengthen through dedicated projects and fellowship.
+                        </motion.p>
+                        <div className="grid grid-cols-2 gap-8 mt-12">
+                            <Stat value="95%" label="Project Completion" description="Across all initiatives" />
+                            <Stat value="9/10" label="Member Satisfaction" description="In our programs" />
+                        </div>
                     </div>
                 </div>
-                </div>
-                <div className="grid grid-cols-2 gap-8 text-center">
-                <AnimatedStat value="95%" label="PROJECT COMPLETION" />
-                <AnimatedStat value="9/10" label="MEMBER SATISFACTION" />
-                </div>
-            </div>
             </div>
         </Section>
     );
