@@ -52,31 +52,25 @@ export default function Header() {
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-secondary/50"
+        hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-secondary/0"
       )}>
       <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <LogoIcon className="h-8 w-8 text-accent" />
           <span className="font-bold sm:inline-block font-headline text-lg">
-            RC Source of the Nile
+            PureGlow
           </span>
         </Link>
         
-        <nav className="hidden md:flex items-center space-x-8 text-sm">
-          {navLinks.map((link) => (
-            <NavLink key={link.href} {...link} />
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:inline-flex rounded-full font-bold bg-foreground text-background hover:bg-foreground/80">
+        <div className="hidden md:flex items-center gap-4">
+          <Button asChild className="rounded-full font-bold bg-foreground text-background hover:bg-foreground/80 px-6">
               <Link href="/events">
-                  Join Us <ArrowRight className="ml-2 h-4 w-4" />
+                  Book Now
               </Link>
           </Button>
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-                <Button variant="ghost" className="px-2 md:hidden">
+                <Button variant="outline" className="p-2 rounded-full h-auto">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
                 </Button>
@@ -85,6 +79,9 @@ export default function Header() {
                 <div className="flex justify-between items-center">
                    <Link href="/" className="flex items-center space-x-2">
                     <LogoIcon className="h-8 w-8 text-accent" />
+                    <span className="font-bold sm:inline-block font-headline text-lg">
+                        PureGlow
+                    </span>
                   </Link>
                   <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)} className="px-2">
                     <X className="h-6 w-6" />
@@ -130,3 +127,5 @@ export default function Header() {
     </header>
   );
 }
+
+    
