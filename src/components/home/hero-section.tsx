@@ -2,22 +2,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Video } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-// Placeholder video URLs. Replace these with your actual video files.
-const videoSources = [
-    "https://videos.pexels.com/video-files/3846573/3846573-hd_1280_720_25fps.mp4",
-    "https://videos.pexels.com/video-files/853875/853875-hd_1366_720_25fps.mp4",
-    "https://videos.pexels.com/video-files/3209828/3209828-hd_1280_720_24fps.mp4",
-];
 
 export default function HeroSection() {
   return (
     <section className="relative bg-background overflow-hidden">
       <div className="container mx-auto max-w-7xl px-8 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left: Main Typography */}
           <motion.div 
@@ -60,42 +53,22 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right: iPhone-style Video Card */}
+          {/* Right: Large Image Card */}
           <motion.div 
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center h-[450px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           >
-            <div className="relative w-[320px] h-[640px] bg-foreground/10 rounded-[48px] shadow-2xl p-4 border-4 border-foreground/5">
-                <div className="absolute top-1/2 left-2 -translate-y-1/2 space-y-1">
-                    <div className="h-12 w-1.5 bg-foreground/10 rounded-full"></div>
-                    <div className="h-24 w-1.5 bg-foreground/10 rounded-full"></div>
-                </div>
-                 <div className="absolute top-24 right-2 -translate-y-1/2 h-20 w-1.5 bg-foreground/10 rounded-full"></div>
-                <div className="bg-background h-full w-full rounded-[32px] overflow-hidden relative">
-                    {/* Video Grid */}
-                    <div className="h-full w-full grid grid-rows-3 gap-2">
-                         {videoSources.map((src, index) => (
-                             <div key={index} className="relative overflow-hidden w-full h-full bg-secondary">
-                                <video
-                                    src={src}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="absolute top-0 left-0 w-full h-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-black/10"></div>
-                             </div>
-                         ))}
-                    </div>
-
-                    {/* Notch */}
-                    <div className="absolute top-4 left-1/2 -translate-x-1/2 h-6 w-28 bg-background rounded-b-lg flex items-center justify-center">
-                        <div className="h-1.5 w-12 bg-foreground/10 rounded-full"></div>
-                    </div>
-                </div>
+            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="https://picsum.photos/1200/800?random=10"
+                alt="Rotary members in action"
+                fill
+                className="object-cover"
+                data-ai-hint="community service"
+                priority
+              />
             </div>
           </motion.div>
         </div>
