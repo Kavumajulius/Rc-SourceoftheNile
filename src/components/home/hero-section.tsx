@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,7 @@ export default function HeroSection() {
       </header>
 
       {/* Main Content Container - Increased bottom padding */}
-      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-16 relative min-h-[800px]">
+      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-32 relative min-h-[800px]">
         
         {/* Top Right - Community service image */}
         <motion.div
