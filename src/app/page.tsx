@@ -49,8 +49,11 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 export default function Home() {
   const MotionLink = motion(Link);
   const [clientEvents, setClientEvents] = useState<Event[]>([]);
+  const [year, setYear] = useState(new Date().getFullYear());
+
 
   useEffect(() => {
+    setYear(new Date().getFullYear());
     // Generate dates on the client-side to avoid hydration mismatch
     const eventsWithDates: Event[] = [
       {
@@ -81,7 +84,7 @@ export default function Home() {
       
       {/* 1. Hero Section */}
       <section className="py-24 md:py-32 relative">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 z-10 relative">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="text-left">
               <motion.div 
@@ -146,6 +149,7 @@ export default function Home() {
                 data-ai-hint="community project women"
                 priority
               />
+              <div className="absolute inset-0 bg-black/30"></div>
               <motion.div 
                 className="absolute bottom-6 left-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg"
                 initial={{ opacity: 0, x: -20 }}
@@ -190,7 +194,7 @@ export default function Home() {
                     <Image src={project.imageUrl} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" data-ai-hint={project.aiHint} />
                   </div>
                   <CardContent className="p-6">
-                    <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+                    <CardTitle>{project.title}</CardTitle>
                     <p className="mt-2 text-sm text-primary-foreground/70 line-clamp-2">{project.description}</p>
                      <div className="p-0 mt-4 text-accent font-bold flex items-center">
                         View Project <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
@@ -223,7 +227,7 @@ export default function Home() {
                   <CardContent className="p-6 grid grid-cols-1 md:grid-cols-4 items-center gap-6">
                     <div className="md:col-span-2">
                       <p className="text-sm text-accent font-bold">{event.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
-                      <CardTitle className="font-headline text-2xl mt-1">{event.title}</CardTitle>
+                      <h3 className="font-headline text-2xl mt-1">{event.title}</h3>
                     </div>
                     <p className="text-muted-foreground">{event.summary}</p>
                     <Button asChild className="rounded-full font-bold w-full md:w-auto justify-self-start md:justify-self-end group">
