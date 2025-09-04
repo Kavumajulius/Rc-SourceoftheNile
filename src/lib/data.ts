@@ -137,25 +137,24 @@ export const resourceLinks = [
     {
         category: "Rotary International",
         links: [
-            { title: "My Rotary", url: "#" },
-            { title: "Rotary Learning Center", url: "#" },
-            { title: "The Rotary Foundation", url: "#" },
-            { title: "End Polio Now", url: "#" },
+            { title: "My Rotary", url: "#", description: "Sign in to manage your profile, access tools, and connect with Rotarians worldwide." },
+            { title: "Rotary Learning Center", url: "#", description: "Take courses to develop your skills and learn more about Rotary." },
+            { title: "The Rotary Foundation", url: "#", description: "Learn how our foundation supports global projects and humanitarian service." },
+            { title: "End Polio Now", url: "#", description: "Join the final push to eradicate polio for good. See our progress and contribute." },
         ]
     },
     {
         category: "District Resources",
         links: [
-            { title: "District 9214 Website", url: "#" },
-            { title: "District Events Calendar", url: "#" },
-            { title: "District Leadership", url: "#" },
+            { title: "District 9214 Website", url: "#", description: "Find news, events, and resources from our district leadership." },
+            { title: "Brand Center", url: "#", description: "Download official logos, templates, and guidelines to represent Rotary accurately." },
         ]
     },
     {
         category: "Club Resources",
         links: [
-            { title: "Club Constitution", url: "#" },
-            { title: "Membership Form", url: "#" },
+            { title: "Club Constitution", url: "#", description: "Review the official bylaws and governing documents for our club." },
+            { title: "Membership Form", url: "#", description: "Access the form for prospective members to officially join our club." },
         ]
     }
 ];
