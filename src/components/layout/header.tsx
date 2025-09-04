@@ -13,10 +13,11 @@ import { motion } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
   { href: "/projects", label: "Projects" },
-  { href: "/members", label: "Members" },
-  { href: "/contact", label: "Contact" },
+  { href: "/leadership", label: "Leadership" },
+  { href: "/fellowship", label: "Fellowship" },
+  { href: "/events", label: "Events" },
+  { href: "/resources", label: "Resources" },
 ];
 
 export default function Header() {
@@ -67,8 +68,8 @@ export default function Header() {
         
         <div className="flex items-center gap-4">
           <Button asChild className="rounded-full font-bold bg-accent-green text-white hover:bg-green-500 px-6 hidden md:flex">
-              <Link href="/donate">
-                  Donate
+              <Link href="/photo-tool">
+                  Photo Tool
               </Link>
           </Button>
            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -118,8 +119,8 @@ export default function Header() {
                     transition={{ delay: 0.8, duration: 0.4 }}
                   >
                     <Button asChild size="lg" className="rounded-full font-bold w-full bg-accent-green text-white hover:bg-green-500">
-                        <Link href="/donate">
-                            Donate Now <ArrowRight className="ml-2 h-4 w-4" />
+                        <Link href="/photo-tool">
+                            Photo Tool <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
                 </motion.div>
