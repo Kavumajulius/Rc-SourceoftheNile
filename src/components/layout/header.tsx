@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -13,7 +14,7 @@ import { motion } from "framer-motion";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/history", label: "History" },
+  { href: "/leadership", label: "Leadership" },
   { href: "/fellowship", label: "Fellowship" },
   { href: "/events", label: "Events" },
   { href: "/resources", label: "Resources" },
