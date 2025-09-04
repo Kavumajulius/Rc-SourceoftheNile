@@ -28,7 +28,7 @@ const placeholderBios = [
 const generatePastPresidents = () => {
     const presidents = [];
     const currentYear = new Date().getFullYear();
-    for (let year = 2022; year >= 1988; year--) {
+    for (let year = currentYear - 1; year >= 1988; year--) {
         const nameIndex = (year - 1988) % placeholderNames.length;
         const bioIndex = (year - 1988) % placeholderBios.length;
         
@@ -94,6 +94,7 @@ export const fellowshipUpdates = [
       { url: "https://picsum.photos/600/400?random=20", aiHint: "people meeting" },
       { url: "https://picsum.photos/600/400?random=21", aiHint: "presentation seminar" },
       { url: "https://picsum.photos/600/400?random=22", aiHint: "group discussion" },
+      { url: "https://picsum.photos/600/400?random=25", aiHint: "teamwork community" },
     ],
   },
   {
@@ -103,6 +104,8 @@ export const fellowshipUpdates = [
     photos: [
         { url: "https://picsum.photos/600/400?random=23", aiHint: "cultural festival" },
         { url: "https://picsum.photos/600/400?random=24", aiHint: "people dancing" },
+        { url: "https://picsum.photos/600/400?random=26", aiHint: "community event" },
+        { url: "https://picsum.photos/600/400?random=27", aiHint: "social gathering" },
     ],
   },
 ];
@@ -137,7 +140,7 @@ export const resourceLinks = [
     {
         category: "Rotary International",
         links: [
-            { title: "My Rotary", url: "#", description: "Sign in to manage your profile, access tools, and connect with Rotarians worldwide." },
+            { title: "My Rotary", url: "#", description: "Manage your profile, access tools, and connect with Rotarians worldwide." },
             { title: "Rotary Learning Center", url: "#", description: "Take courses to develop your skills and learn more about Rotary." },
             { title: "The Rotary Foundation", url: "#", description: "Learn how our foundation supports global projects and humanitarian service." },
             { title: "End Polio Now", url: "#", description: "Join the final push to eradicate polio for good. See our progress and contribute." },
