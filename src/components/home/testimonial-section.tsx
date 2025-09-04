@@ -24,10 +24,10 @@ export default function TestimonialSection() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-medium leading-tight">
-                They took social media off our plate completely and our audience has never been <span className="italic">more engaged</span>.
+                The clean water project transformed our village. Our children are healthier and can now attend school regularly. We are so <span className="italic">grateful for their support</span>.
             </h2>
             <p className="mt-6 text-muted-foreground">
-              Elena Chen • Bloom Skincare
+              Beatrice Achieng • Community Leader, Budondo Village
             </p>
           </div>
           <div className="relative aspect-square rounded-lg overflow-hidden">
