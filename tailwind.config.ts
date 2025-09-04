@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Open Sans', 'sans-serif'],
-        headline: ['Montserrat', 'sans-serif'],
+        body: ['"Inter"', 'sans-serif'],
+        headline: ['"Syne"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

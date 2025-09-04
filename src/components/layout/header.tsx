@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LogoIcon } from "../icons";
 
@@ -23,13 +23,14 @@ export default function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const NavLink = ({ href, label }: { href: string; label: string }) => (
+  const NavLink = ({ href, label, className }: { href: string; label: string, className?: string }) => (
     <Link
       href={href}
       onClick={() => setIsMobileMenuOpen(false)}
       className={cn(
-        "font-medium transition-colors hover:text-accent",
-        pathname === href ? "text-accent font-bold" : "text-foreground/80"
+        "font-medium transition-colors hover:text-primary",
+        pathname === href ? "text-primary font-bold" : "text-foreground/60",
+        className
       )}
     >
       {label}
@@ -38,29 +39,29 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <LogoIcon className="h-8 w-8 text-primary" />
-            <span className="hidden font-bold sm:inline-block font-headline text-lg">
-              RC Source of the Nile
-            </span>
-          </Link>
-          <nav className="flex items-center space-x-6 text-sm">
-            {navLinks.map((link) => (
-              <NavLink key={link.href} {...link} />
-            ))}
-          </nav>
-        </div>
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center space-x-2">
+          <LogoIcon className="h-8 w-8 text-primary" />
+          <span className="font-bold sm:inline-block font-headline text-lg">
+            RC Source of the Nile
+          </span>
+        </Link>
+        
+        <nav className="hidden md:flex items-center space-x-6 text-sm">
+          {navLinks.map((link) => (
+            <NavLink key={link.href} {...link} />
+          ))}
+        </nav>
 
-        <div className="flex flex-1 items-center justify-between md:hidden">
-            <Link href="/" className="flex items-center space-x-2">
-                <LogoIcon className="h-8 w-8 text-primary" />
-                <span className="font-bold font-headline text-lg">RC Source of the Nile</span>
-            </Link>
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <div className="flex items-center gap-2">
+          <Button asChild className="hidden md:inline-flex rounded-full font-bold">
+              <Link href="/events">
+                  Join Us <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+          </Button>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-                <Button variant="ghost" className="px-2">
+                <Button variant="ghost" className="px-2 md:hidden">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
                 </Button>
@@ -73,7 +74,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={cn(
-                        "text-lg font-medium transition-colors hover:text-primary",
+                        "text-2xl font-medium transition-colors hover:text-primary",
                         pathname === link.href ? "text-primary" : "text-muted-foreground"
                     )}
                     >
@@ -82,7 +83,7 @@ export default function Header() {
                 ))}
                 </nav>
             </SheetContent>
-            </Sheet>
+          </Sheet>
         </div>
       </div>
     </header>
