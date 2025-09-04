@@ -8,11 +8,13 @@ import MembershipSection from "@/components/home/membership-section";
 import SignatureProjectsSection from "@/components/home/signature-projects-section";
 import FellowshipSection from "@/components/home/fellowship-section";
 import LeadersSection from "@/components/home/leaders-section";
+import ValuePropSection from "@/components/home/value-prop-section";
 
 export default function Home() {
   return (
     <div className="flex flex-col overflow-x-hidden bg-background text-foreground">
       <HeroSection />
+      <ValuePropSection />
       <SignatureProjectsSection />
       <MembershipSection />
       <FellowshipSection />
