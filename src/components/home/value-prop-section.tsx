@@ -28,7 +28,7 @@ const ValueCard = ({
     className={`relative rounded-xl overflow-hidden p-8 flex flex-col justify-between h-[450px] bg-secondary group ${className}`}
   >
     <div className="relative z-10">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start">
         <span className="text-sm font-bold bg-background/50 text-foreground py-1 px-3 rounded-full backdrop-blur-sm">
           {`0${number}/`}
         </span>
@@ -40,7 +40,7 @@ const ValueCard = ({
           <ArrowUpRight className="h-5 w-5" />
         </Button>
       </div>
-      <h3 className="text-4xl font-bold max-w-xs mt-6">{title}</h3>
+      <h3 className="text-4xl font-bold text-white max-w-[250px] absolute bottom-24">{title}</h3>
     </div>
 
     <div className="relative z-10">
@@ -59,7 +59,7 @@ const ValueCard = ({
       className="object-cover transition-transform duration-500 group-hover:scale-105"
       data-ai-hint={aiHint}
     />
-     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
   </motion.div>
 );
 
@@ -67,7 +67,7 @@ export default function ValuePropSection() {
   return (
     <Section className="bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex justify-between items-center mb-12">
           <h2 className="text-4xl font-bold max-w-2xl leading-tight">
             Creating lasting and <span className="text-primary">transformational impact</span> for the communities we serve.
           </h2>
