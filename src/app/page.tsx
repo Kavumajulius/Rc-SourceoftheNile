@@ -10,6 +10,7 @@ import FellowshipSection from "@/components/home/fellowship-section";
 import LeadersSection from "@/components/home/leaders-section";
 import TestimonialSection from "@/components/home/testimonial-section";
 import ValuePropSection from "@/components/home/value-prop-section";
+import { ServiceGallerySection } from "@/components/home/service-gallery-section";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <LeadersSection />
       <ImpactStatsSection />
       <TestimonialSection />
+      <ServiceGallerySection />
       <ContactSection />
     </div>
   );
