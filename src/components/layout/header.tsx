@@ -55,7 +55,7 @@ export default function Header() {
       <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <LogoIcon className="h-8 w-8 text-primary" />
-          <span className="font-bold sm:inline-block font-headline text-lg">
+          <span className="font-bold sm:inline-block text-lg">
             RC Source of the Nile
           </span>
         </Link>
@@ -83,7 +83,7 @@ export default function Header() {
                 <div className="flex justify-between items-center">
                    <Link href="/" className="flex items-center space-x-2">
                     <LogoIcon className="h-8 w-8 text-primary" />
-                    <span className="font-bold sm:inline-block font-headline text-lg">
+                    <span className="font-bold sm:inline-block text-lg">
                         RC Source of the Nile
                     </span>
                   </Link>
@@ -103,7 +103,7 @@ export default function Header() {
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                            "text-3xl font-headline font-bold transition-colors hover:text-primary",
+                            "text-3xl font-bold transition-colors hover:text-primary",
                             pathname === link.href ? "text-primary" : "text-foreground"
                         )}
                       >

@@ -45,7 +45,7 @@ const AnimatedStat = ({ value, label, icon: Icon, suffix }: { value: string, lab
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="text-left"
     >
-      <p className="font-headline text-5xl lg:text-7xl font-bold text-foreground">
+      <p className="text-5xl lg:text-7xl font-bold text-foreground">
         {displayValue}
         {suffix && <span className="text-accent">{suffix}</span>}
       </p>
@@ -61,7 +61,7 @@ export default function ImpactStatsSection() {
             <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div className="max-w-md">
-                <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tighter">Our Impact by the Numbers</h2>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">Our Impact by the Numbers</h2>
                 <p className="mt-4 text-muted-foreground text-lg">We measure our success by the lives we touch and the communities we strengthen.</p>
                 <div className="mt-6 flex gap-2">
                     {Array(3).fill(0).map((_, i) => (

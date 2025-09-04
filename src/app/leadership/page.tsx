@@ -34,7 +34,7 @@ export default function LeadershipPage() {
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="font-headline text-2xl md:text-4xl font-extrabold tracking-tight"
+            className="text-2xl md:text-4xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -109,7 +109,7 @@ export default function LeadershipPage() {
                     transition={{ duration: 0.7 }}
                     className={`mt-6 md:mt-0 text-center md:text-left ${index % 2 === 0 ? 'md:order-1 md:text-right' : 'md:order-2 md:text-left'}`}
                   >
-                    <p className="text-2xl font-headline font-bold">{president.name}</p>
+                    <p className="text-2xl font-bold">{president.name}</p>
                     <p className="text-accent font-semibold">{president.term}</p>
                     <p className="mt-2 text-muted-foreground">{president.bio}</p>
                   </motion.div>

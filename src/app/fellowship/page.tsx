@@ -44,7 +44,7 @@ export default function FellowshipPage() {
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -65,7 +65,7 @@ export default function FellowshipPage() {
 
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="font-headline text-4xl font-bold md:text-5xl">Fellowship Updates</h1>
+          <h1 className="text-4xl font-bold md:text-5xl">Fellowship Updates</h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
             Stay connected with highlights from our recent gatherings.
           </p>
@@ -76,7 +76,7 @@ export default function FellowshipPage() {
             <Card key={index} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline">
-                  <CardTitle className="font-headline text-2xl">{update.title}</CardTitle>
+                  <CardTitle className="text-2xl">{update.title}</CardTitle>
                   <p className="text-sm text-muted-foreground mt-1 sm:mt-0">{update.date}</p>
                 </div>
               </CardHeader>

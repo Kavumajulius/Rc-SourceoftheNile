@@ -14,8 +14,8 @@ export default function MembershipSection() {
                 <div className="flex justify-between items-start mb-8">
                 <div>
                     <p className="font-bold text-sm text-accent">HANDPICKED FOR YOUR NEEDS</p>
-                    <h2 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter mt-4">Membership</h2>
-                    <h2 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--foreground))' }}>Essentials</h2>
+                    <h2 className="text-7xl md:text-9xl font-extrabold tracking-tighter mt-4">Membership</h2>
+                    <h2 className="text-7xl md:text-9xl font-extrabold tracking-tighter text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--foreground))' }}>Essentials</h2>
                 </div>
                 <p className="max-w-xs text-muted-foreground mt-4">We offer a carefully curated selection of membership benefits designed to enhance your service journey.</p>
                 </div>
@@ -46,7 +46,7 @@ export default function MembershipSection() {
                     </div>
 
                     <div>
-                        <h3 className="font-headline text-3xl font-bold">Become a Member</h3>
+                        <h3 className="text-3xl font-bold">Become a Member</h3>
                         <p className="mt-4 text-lg text-muted-foreground">Join a global network of volunteers making a difference. As a member, you will connect with diverse perspectives, develop leadership skills, make a tangible impact, and build lifelong friendships.</p>
                         <Button size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-bold px-8 py-6 text-lg group" asChild>
                         <Link href="/events">See Products <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/></Link>

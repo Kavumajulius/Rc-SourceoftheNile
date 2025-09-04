@@ -50,7 +50,7 @@ export default function EventsPage() {
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -71,7 +71,7 @@ export default function EventsPage() {
       {/* 2. Upcoming Events Section */}
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl font-bold md:text-5xl">Upcoming Events</h2>
+          <h2 className="text-4xl font-bold md:text-5xl">Upcoming Events</h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
             Join us for our upcoming meetings, projects, and fellowship events.
           </p>
@@ -94,7 +94,7 @@ export default function EventsPage() {
                 </div>
                 <div className="flex-1">
                   <CardHeader>
-                    <CardTitle className="font-headline text-2xl">{event.title}</CardTitle>
+                    <CardTitle className="text-2xl">{event.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="mb-4">{event.summary}</CardDescription>
@@ -128,7 +128,7 @@ export default function EventsPage() {
         className="py-20 bg-accent text-accent-foreground"
       >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">
+          <h2 className="text-3xl md:text-4xl font-bold">
             Join us at our next event and make a difference.
           </h2>
           <p className="mt-4 text-lg text-accent-foreground/80 max-w-xl mx-auto">

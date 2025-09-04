@@ -64,7 +64,7 @@ const AnimatedStat = ({
       className="text-center"
     >
       <Icon className="h-12 w-12 mx-auto text-accent" />
-      <p className="mt-4 font-headline text-5xl font-bold">{value}</p>
+      <p className="mt-4 text-5xl font-bold">{value}</p>
       <p className="mt-2 text-muted-foreground text-lg">{label}</p>
     </motion.div>
   );
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
         <div className="absolute inset-0 bg-primary/60" />
         <div className="relative z-10 container mx-auto px-4">
           <motion.h1
-            className="font-headline text-4xl md:text-5xl font-extrabold tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -182,7 +182,7 @@ export default function ProjectsPage() {
                     <p className="text-sm text-accent font-bold mb-2">
                       Education
                     </p>
-                    <h3 className="font-headline text-xl font-bold">
+                    <h3 className="text-xl font-bold">
                       {project.title}
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground flex-grow line-clamp-3">
@@ -207,7 +207,7 @@ export default function ProjectsPage() {
       <Section className="py-20 md:py-28 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold md:text-5xl">
+            <h2 className="text-4xl font-bold md:text-5xl">
               Our Collective Impact
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -229,7 +229,7 @@ export default function ProjectsPage() {
       {/* 5. Call-to-Action Section */}
       <Section id="join-us" className="py-20 md:py-28 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold">
+          <h2 className="text-3xl md:text-4xl font-bold">
             Want to be part of our next project?
           </h2>
           <p className="mt-4 text-lg text-primary-foreground/80 max-w-xl mx-auto">

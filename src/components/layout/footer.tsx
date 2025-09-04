@@ -29,14 +29,14 @@ export default function Footer() {
             <div className="flex flex-col items-start col-span-12 md:col-span-4">
                 <div className="flex items-center space-x-2">
                     <LogoIcon className="h-8 w-8 text-accent" />
-                    <span className="font-bold font-headline text-lg">RC Source of the Nile</span>
+                    <span className="font-bold text-lg">RC Source of the Nile</span>
                 </div>
                 <p className="mt-4 text-muted-foreground text-sm max-w-xs">
                     A community of leaders creating positive, lasting change in our communities and around the world.
                 </p>
             </div>
             <div className="col-span-6 md:col-span-2">
-                <h3 className="font-headline font-bold text-background mb-4">Menu</h3>
+                <h3 className="font-bold text-background mb-4">Menu</h3>
                 <ul className="space-y-2">
                     {navLinks.map(link => (
                         <li key={link.label}>
@@ -48,7 +48,7 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="col-span-6 md:col-span-2">
-                 <h3 className="font-headline font-bold text-background mb-4">Follow Us</h3>
+                 <h3 className="font-bold text-background mb-4">Follow Us</h3>
                  <ul className="space-y-2">
                     {["Facebook", "Twitter", "LinkedIn", "Instagram"].map(link => (
                         <li key={link}>
@@ -60,9 +60,9 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="col-span-12 md:col-span-4">
-                 <h3 className="font-headline font-bold text-background mb-4">Get In Touch</h3>
+                 <h3 className="font-bold text-background mb-4">Get In Touch</h3>
                  <p className="text-sm text-muted-foreground">We're here to answer your questions and welcome you to our community.</p>
-                 <a href="mailto:info@rcsourcethenile.org" className="font-headline text-2xl font-bold mt-2 text-background hover:text-accent transition-colors block">
+                 <a href="mailto:info@rcsourcethenile.org" className="text-2xl font-bold mt-2 text-background hover:text-accent transition-colors block">
                     info@rcsourcethenile.org
                  </a>
             </div>
