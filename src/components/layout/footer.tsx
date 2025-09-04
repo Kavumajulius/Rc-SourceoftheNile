@@ -23,12 +23,12 @@ export default function Footer() {
     }, []);
 
   return (
-    <footer className="bg-secondary border-t">
+    <footer className="bg-foreground text-background border-t border-background/10">
       <div className="container mx-auto px-4 py-16">
         <div className="grid gap-12 md:grid-cols-12">
             <div className="flex flex-col items-start col-span-12 md:col-span-4">
                 <div className="flex items-center space-x-2">
-                    <LogoIcon className="h-8 w-8 text-primary" />
+                    <LogoIcon className="h-8 w-8 text-accent" />
                     <span className="font-bold font-headline text-lg">RC Source of the Nile</span>
                 </div>
                 <p className="mt-4 text-muted-foreground text-sm max-w-xs">
@@ -36,11 +36,11 @@ export default function Footer() {
                 </p>
             </div>
             <div className="col-span-6 md:col-span-2">
-                <h3 className="font-headline font-bold text-primary mb-4">Menu</h3>
+                <h3 className="font-headline font-bold text-background mb-4">Menu</h3>
                 <ul className="space-y-2">
                     {navLinks.map(link => (
                         <li key={link.label}>
-                            <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                            <Link href={link.href} className="text-sm text-muted-foreground hover:text-background hover:underline">
                                 {link.label}
                             </Link>
                         </li>
@@ -48,11 +48,11 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="col-span-6 md:col-span-2">
-                 <h3 className="font-headline font-bold text-primary mb-4">Follow Us</h3>
+                 <h3 className="font-headline font-bold text-background mb-4">Follow Us</h3>
                  <ul className="space-y-2">
                     {["Facebook", "Twitter", "LinkedIn", "Instagram"].map(link => (
                         <li key={link}>
-                            <Link href="#" className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                            <Link href="#" className="text-sm text-muted-foreground hover:text-background hover:underline">
                                 {link}
                             </Link>
                         </li>
@@ -60,14 +60,14 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="col-span-12 md:col-span-4">
-                 <h3 className="font-headline font-bold text-primary mb-4">Get In Touch</h3>
+                 <h3 className="font-headline font-bold text-background mb-4">Get In Touch</h3>
                  <p className="text-sm text-muted-foreground">We're here to answer your questions and welcome you to our community.</p>
-                 <a href="mailto:info@rcsourcethenile.org" className="font-headline text-2xl font-bold mt-2 text-primary hover:text-accent transition-colors block">
+                 <a href="mailto:info@rcsourcethenile.org" className="font-headline text-2xl font-bold mt-2 text-background hover:text-accent transition-colors block">
                     info@rcsourcethenile.org
                  </a>
             </div>
         </div>
-        <div className="mt-12 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
             <p>&copy; {year} RC Source of the Nile. All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
                 <Link href="#" className="hover:underline">Privacy Policy</Link>

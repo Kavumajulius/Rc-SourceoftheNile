@@ -12,14 +12,13 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1200px",
+        "2xl": "1440px",
       },
     },
     extend: {
       fontFamily: {
-        body: ['"Open Sans"', 'sans-serif'],
-        headline: ['"Montserrat"', 'sans-serif'],
-        code: ['monospace'],
+        body: ['"Inter"', 'sans-serif'],
+        headline: ['"Syne"', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

@@ -40,8 +40,8 @@ export default function Header() {
       href={href}
       onClick={() => setIsMobileMenuOpen(false)}
       className={cn(
-        "font-medium transition-colors hover:text-primary",
-        pathname === href ? "text-primary font-bold" : "text-foreground/60",
+        "font-medium transition-colors hover:text-foreground",
+        pathname === href ? "text-foreground font-bold" : "text-foreground/60",
         className
       )}
     >
@@ -52,11 +52,11 @@ export default function Header() {
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        hasScrolled ? "border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+        hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-secondary/50"
       )}>
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <LogoIcon className="h-8 w-8 text-primary" />
+          <LogoIcon className="h-8 w-8 text-accent" />
           <span className="font-bold sm:inline-block font-headline text-lg">
             RC Source of the Nile
           </span>
@@ -69,7 +69,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild className="hidden md:inline-flex rounded-full font-bold bg-primary text-primary-foreground hover:bg-primary/80">
+          <Button asChild className="hidden md:inline-flex rounded-full font-bold bg-foreground text-background hover:bg-foreground/80">
               <Link href="/events">
                   Join Us <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -84,7 +84,7 @@ export default function Header() {
             <SheetContent side="right" className="w-full bg-background/95 backdrop-blur-lg">
                 <div className="flex justify-between items-center">
                    <Link href="/" className="flex items-center space-x-2">
-                    <LogoIcon className="h-8 w-8 text-primary" />
+                    <LogoIcon className="h-8 w-8 text-accent" />
                   </Link>
                   <Button variant="ghost" onClick={() => setIsMobileMenuOpen(false)} className="px-2">
                     <X className="h-6 w-6" />
@@ -102,8 +102,8 @@ export default function Header() {
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                            "text-3xl font-headline font-bold transition-colors hover:text-primary",
-                            pathname === link.href ? "text-primary" : "text-foreground"
+                            "text-3xl font-headline font-bold transition-colors hover:text-accent",
+                            pathname === link.href ? "text-accent" : "text-foreground"
                         )}
                       >
                       {link.label}
@@ -117,7 +117,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 0.4 }}
                   >
-                    <Button asChild size="lg" className="rounded-full font-bold w-full">
+                    <Button asChild size="lg" className="rounded-full font-bold w-full bg-foreground text-background">
                         <Link href="/events">
                             Join Us <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
