@@ -2,110 +2,132 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Cog } from "lucide-react";
+
+const RotaryGearIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path fillRule="evenodd" d="M9.401 3.003c1.155.043 2.252.32 3.221.796l.962-.962a.75.75 0 011.06 1.06l-.962.962c.476.969.753 2.066.796 3.221h1.32a.75.75 0 010 1.5h-1.32c-.043 1.155-.32 2.252-.796 3.221l.962.962a.75.75 0 01-1.06 1.06l-.962-.962a6.723 6.723 0 01-3.221.796v1.32a.75.75 0 01-1.5 0v-1.32a6.723 6.723 0 01-3.221-.796l-.962.962a.75.75 0 01-1.06-1.06l.962-.962a6.723 6.723 0 01-.796-3.221H3a.75.75 0 010-1.5h1.32c.043-1.155.32-2.252.796-3.221l-.962-.962a.75.75 0 011.06-1.06l.962.962c.969-.476 2.066-.753 3.221-.796V3.003a.75.75 0 011.5 0v.001zM12 15a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+        <path d="M12 8.25a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-3a.75.75 0 01.75-.75z" />
+    </svg>
+);
+
 
 export default function HeroSection() {
+    const headlineVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.15,
+                duration: 0.6,
+                ease: "easeOut",
+            },
+        }),
+    };
+
+    const tagVariants = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: (i: number) => ({
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delay: 0.5 + i * 0.2,
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+            },
+        }),
+    };
+
     return (
-        <section className="relative min-h-screen flex items-center bg-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5" />
-        <div className="container mx-auto px-4 z-10 relative">
-          <motion.div
-            className="max-w-7xl mx-auto grid grid-cols-12 grid-rows-6 gap-x-4 gap-y-2"
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-            }}
-          >
-            {/* User Glow */}
-            <motion.div
-              className="col-start-1 col-span-5 row-start-1 flex items-center gap-2 text-sm"
-              variants={{ hidden: { opacity: 0, y: -20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
-            >
-              <div className="flex -space-x-2">
-                <Image src="https://picsum.photos/40/40?random=1" alt="member 1" width={24} height={24} className="rounded-full border-2 border-background"/>
-                <Image src="https://picsum.photos/40/40?random=2" alt="member 2" width={24} height={24} className="rounded-full border-2 border-background"/>
-                <Image src="https://picsum.photos/40/40?random=3" alt="member 3" width={24} height={24} className="rounded-full border-2 border-background"/>
-              </div>
-              <span className="font-semibold text-muted-foreground">200+ Members with Confidence</span>
-            </motion.div>
+        <section className="relative w-full bg-background overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+                <div className="grid md:grid-cols-12 gap-8 items-center">
+                    {/* Left Column */}
+                    <div className="md:col-span-7 lg:col-span-7 relative">
+                        <motion.div
+                            className="absolute -top-8 left-16"
+                            custom={0}
+                            initial="hidden"
+                            animate="visible"
+                            variants={tagVariants}
+                        >
+                            <div className="bg-white rounded-full px-4 py-2 text-sm font-semibold text-gray-600 shadow-s1 flex items-center">
+                                Community Service
+                            </div>
+                        </motion.div>
+                        
+                        <motion.h1
+                            className="font-headline font-bold text-gray-900"
+                            style={{ fontSize: "clamp(3rem, 6vw, 6.875rem)", lineHeight: 1.05 }}
+                            initial="hidden"
+                            animate="visible"
+                        >
+                            <motion.span variants={headlineVariants} custom={0} className="block">Rotary</motion.span>
+                            <motion.span variants={headlineVariants} custom={1} className="block">Club of</motion.span>
+                            <motion.span variants={headlineVariants} custom={2} className="block text-primary">Source of the Nile</motion.span>
+                        </motion.h1>
 
-            {/* Radiant */}
-            <motion.h1
-              className="col-start-1 col-span-9 row-start-2 row-span-2 font-headline text-[16vw] md:text-[10vw] leading-none font-extrabold tracking-tighter flex items-center"
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
-            >
-              Lasting
-            </motion.h1>
+                        <motion.div
+                            className="absolute -bottom-8 left-1/2 -translate-x-1/2"
+                            custom={1}
+                            initial="hidden"
+                            animate="visible"
+                            variants={tagVariants}
+                        >
+                            <div className="bg-white rounded-full pl-4 pr-5 py-2 text-sm font-semibold text-gray-600 shadow-s1 flex items-center gap-2">
+                                <RotaryGearIcon />
+                                Leadership & Impact
+                            </div>
+                        </motion.div>
 
-            {/* Skin */}
-            <motion.h1
-              className="col-start-2 col-span-7 row-start-3 row-span-2 font-headline text-[12vw] md:text-[8vw] leading-none font-extrabold tracking-tighter text-foreground/10 flex items-center"
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.1 } } }}
-            >
-              Change
-            </motion.h1>
-            
-            {/* Top Right Image */}
-            <motion.div 
-              className="col-start-10 col-span-3 row-start-2 row-span-2"
-              variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: 'easeOut' } } }}
-            >
-              <Image 
-                src="https://picsum.photos/300/200?random=11"
-                alt="Community work"
-                width={300}
-                height={200}
-                className="rounded-xl object-cover"
-                data-ai-hint="community work"
-              />
-            </motion.div>
-            
-            {/* Middle Paragraph */}
-            <motion.p
-              className="col-start-8 col-span-5 row-start-4 text-sm text-muted-foreground"
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.8, ease: 'easeOut', delay: 0.3 } } }}
-            >
-              We are a global network of community leaders and friends dedicated to creating lasting change in our communities and around the world.
-            </motion.p>
+                        <motion.p
+                            className="mt-6 max-w-lg text-lg text-gray-500"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6, duration: 0.6 }}
+                        >
+                            Together, we serve communities, empower leaders, and create lasting impact along the Nile and beyond.
+                        </motion.p>
+                        
+                        <motion.div
+                            className="mt-8 flex flex-col sm:flex-row gap-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.6 }}
+                        >
+                            <Button size="lg" className="bg-gray-900 text-white rounded-full font-bold px-8 py-6 text-base hover:bg-gray-700 hover:text-white transition-colors">
+                                Join Us Today
+                            </Button>
+                             <Button size="lg" variant="outline" className="bg-accent-green border-accent-green text-white rounded-full font-bold px-8 py-6 text-base hover:bg-green-500 hover:text-white transition-colors">
+                                Learn More
+                            </Button>
+                        </motion.div>
+                    </div>
 
-            {/* Expert Solutions */}
-            <motion.p
-              className="col-start-1 col-span-4 row-start-5 font-bold"
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.4 } } }}
-            >
-              Expert Solutions for Community Needs
-            </motion.p>
-            
-            {/* Awaits */}
-            <motion.h1
-              className="col-start-7 col-span-6 row-start-5 row-span-2 font-headline text-[16vw] md:text-[10vw] leading-none font-extrabold tracking-tighter flex items-center"
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut', delay: 0.2 } } }}
-            >
-              Awaits
-            </motion.h1>
-
-            {/* Free Consultation CTA */}
-            <motion.div
-              className="col-start-4 col-span-3 row-start-5"
-              variants={{ hidden: { opacity: 0, scale: 0.8 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: 'easeOut', delay: 0.5 } } }}
-            >
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/80 rounded-full font-bold px-6 py-6 text-base group w-full" asChild>
-                <Link href="/events">Free Consultation <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/></Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-        <motion.div 
-          className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        />
-      </section>
+                    {/* Right Column */}
+                    <div className="md:col-span-5 lg:col-span-5 flex items-center justify-center mt-12 md:mt-0">
+                         <motion.div 
+                            className="relative w-full h-[500px] max-w-sm"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
+                        >
+                            <Image
+                                src="https://picsum.photos/600/800?random=42"
+                                alt="Rotary members collaborating on a community project"
+                                fill
+                                className="rounded-3xl object-cover shadow-lg"
+                                data-ai-hint="teamwork community"
+                            />
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 }
