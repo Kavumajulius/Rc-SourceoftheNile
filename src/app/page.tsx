@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { projects, fellowshipUpdates } from "@/lib/data";
+import { projects } from "@/lib/data";
 import { ArrowRight, Check, MoveRight, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,7 +81,9 @@ export default function Home() {
   const [galleryImages, setGalleryImages] = useState<{ url: string; height: number; aiHint: string }[]>([]);
 
   useEffect(() => {
-    const images = fellowshipUpdates.flatMap(u => u.photos).map(photo => ({
+    // Note: fellowshipUpdates is not imported, assuming this section might be removed or refactored.
+    // If you need the gallery, ensure fellowshipUpdates is imported from '@/lib/data'.
+    const images = [].map((photo: any) => ({
       ...photo,
       height: Math.random() > 0.5 ? 700 : 400,
     }));

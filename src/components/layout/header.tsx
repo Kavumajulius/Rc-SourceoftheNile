@@ -52,7 +52,7 @@ export default function Header() {
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-secondary/0"
+        hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-secondary"
       )}>
       <div className="container flex h-24 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
@@ -62,8 +62,8 @@ export default function Header() {
           </span>
         </Link>
         
-        <div className="hidden md:flex items-center gap-4">
-          <Button asChild className="rounded-full font-bold bg-foreground text-background hover:bg-foreground/80 px-6">
+        <div className="flex items-center gap-4">
+          <Button asChild className="rounded-full font-bold bg-foreground text-background hover:bg-foreground/80 px-6 hidden md:flex">
               <Link href="/events">
                   Book Now
               </Link>
@@ -127,5 +127,3 @@ export default function Header() {
     </header>
   );
 }
-
-    
