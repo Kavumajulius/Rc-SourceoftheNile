@@ -28,8 +28,8 @@ export default function Header() {
       href={href}
       onClick={() => setIsMobileMenuOpen(false)}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-primary",
-        pathname === href ? "text-primary" : "text-muted-foreground"
+        "font-medium transition-colors hover:text-accent",
+        pathname === href ? "text-accent font-bold" : "text-foreground/80"
       )}
     >
       {label}
@@ -38,15 +38,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
+      <div className="container flex h-20 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <LogoIcon className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block font-headline">
+            <LogoIcon className="h-8 w-8 text-primary" />
+            <span className="hidden font-bold sm:inline-block font-headline text-lg">
               RC Source of the Nile
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center space-x-6 text-sm">
             {navLinks.map((link) => (
               <NavLink key={link.href} {...link} />
             ))}
@@ -55,8 +55,8 @@ export default function Header() {
 
         <div className="flex flex-1 items-center justify-between md:hidden">
             <Link href="/" className="flex items-center space-x-2">
-                <LogoIcon className="h-6 w-6 text-primary" />
-                <span className="font-bold font-headline">RC Source of the Nile</span>
+                <LogoIcon className="h-8 w-8 text-primary" />
+                <span className="font-bold font-headline text-lg">RC Source of the Nile</span>
             </Link>
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
