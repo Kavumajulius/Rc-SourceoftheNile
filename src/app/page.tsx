@@ -285,7 +285,7 @@ export default function Home() {
           <div className="relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
             <div className="space-y-16">
-              {pastPresidents.map((president, index) => (
+              {pastPresidents.slice(0, 4).map((president, index) => (
                  <motion.div
                   key={president.term}
                   initial={{ opacity: 0 }}
@@ -447,3 +447,4 @@ export default function Home() {
   );
 }
 
+    
