@@ -2,8 +2,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { projects } from "@/lib/data";
+import { Card, CardContent } from "@/components/ui/card";
+import { projects, fellowshipUpdates } from "@/lib/data";
 import { ArrowRight, Check, MoveRight, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -93,6 +93,7 @@ export default function Home() {
       
       {/* 1. Hero Section */}
       <section className="relative min-h-screen flex items-center bg-secondary overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5" />
         <div className="container mx-auto px-4 z-10 relative">
           <motion.div
             className="max-w-7xl mx-auto grid grid-cols-12 grid-rows-6 gap-x-4 gap-y-2"
@@ -262,7 +263,7 @@ export default function Home() {
               <div>
                 <p className="font-bold text-sm text-accent">HANDPICKED FOR YOUR NEEDS</p>
                 <h2 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter mt-4">Membership</h2>
-                <h2 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter text-transparent" style={{ WebkitTextStroke: '2px var(--colors-foreground, black)' }}>Essentials</h2>
+                <h2 className="font-headline text-7xl md:text-9xl font-extrabold tracking-tighter text-transparent" style={{ WebkitTextStroke: '2px hsl(var(--foreground))' }}>Essentials</h2>
               </div>
               <p className="max-w-xs text-muted-foreground mt-4">We offer a carefully curated selection of membership benefits designed to enhance your service journey.</p>
             </div>
@@ -324,5 +325,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
