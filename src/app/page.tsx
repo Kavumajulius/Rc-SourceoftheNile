@@ -50,6 +50,7 @@ export default function Home() {
   const MotionLink = motion(Link);
   const [clientEvents, setClientEvents] = useState<Event[]>([]);
   const [year, setYear] = useState(new Date().getFullYear());
+  const [galleryPhotos, setGalleryPhotos] = useState<{url: string; aiHint: string; height: number}[]>([]);
 
 
   useEffect(() => {
@@ -76,6 +77,16 @@ export default function Home() {
       },
     ];
     setClientEvents(eventsWithDates);
+
+    const photosWithRandomHeights = fellowshipUpdates
+      .flatMap(u => u.photos)
+      .slice(0, 8)
+      .map(photo => ({
+        ...photo,
+        height: Math.random() > 0.5 ? 400 : 700,
+      }));
+    setGalleryPhotos(photosWithRandomHeights);
+
   }, []);
 
 
@@ -377,7 +388,7 @@ export default function Home() {
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">A glimpse into our recent fellowships, projects, and events.</p>
           </div>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-            {fellowshipUpdates.flatMap(u => u.photos).slice(0,8).map((photo, index) => (
+            {galleryPhotos.map((photo, index) => (
                <motion.div 
                 key={index} 
                 className="overflow-hidden rounded-lg shadow-lg"
@@ -391,7 +402,7 @@ export default function Home() {
                     src={photo.url}
                     alt={`Gallery photo ${index + 1}`}
                     width={500}
-                    height={Math.random() > 0.5 ? 400 : 700}
+                    height={photo.height}
                     className="w-full h-auto object-cover"
                     data-ai-hint={photo.aiHint}
                   />
@@ -450,5 +461,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
