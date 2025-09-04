@@ -1,29 +1,58 @@
-export const pastPresidents = [
-  {
-    name: "John Doe",
-    term: "2022-2023",
-    bio: "John Doe led the club through a period of significant growth, launching the 'Literacy for All' campaign.",
-    achievements: ["Launched 'Literacy for All'", "Increased membership by 20%"],
-    imageUrl: "https://picsum.photos/400/400?random=10",
-    aiHint: "man portrait"
-  },
-  {
-    name: "Jane Smith",
-    term: "2021-2022",
-    bio: "Jane Smith focused on community health, initiating the club's annual free medical camps.",
-    achievements: ["Started annual medical camps", "Secured a Global Grant for a water project"],
-    imageUrl: "https://picsum.photos/400/400?random=11",
-    aiHint: "woman portrait"
-  },
-  {
-    name: "Peter Jones",
-    term: "2020-2021",
-    bio: "Peter Jones's presidency was marked by a strong response to the global pandemic, organizing food drives and support systems.",
-    achievements: ["Led COVID-19 response efforts", "Established a partnership with the local hospital"],
-    imageUrl: "https://picsum.photos/400/400?random=12",
-    aiHint: "man professional"
-  },
+
+const placeholderNames = [
+    "Jameson", "Williams", "Michael", "Johnson", "David", "Brown", "Robert", "Davis",
+    "Richard", "Miller", "Joseph", "Wilson", "Thomas", "Moore", "Charles", "Taylor",
+    "Christopher", "Anderson", "Daniel", "Jackson", "Matthew", "White", "Anthony", "Harris",
+    "Mark", "Martin", "Donald", "Thompson", "Steven", "Garcia", "Paul", "Martinez",
+    "Andrew", "Robinson", "Joshua", "Clark", "Kevin", "Rodriguez", "Brian", "Lewis",
+    "George", "Lee", "Edward", "Walker", "Ronald", "Hall", "Timothy", "Allen",
+    "Jason", "Young", "Jeffrey", "Hernandez", "Ryan", "King", "Jacob", "Wright",
+    "Gary", "Lopez", "Nicholas", "Hill", "Eric", "Scott", "Jonathan", "Green",
+    "Stephen", "Adams", "Larry", "Baker", "Justin", "Gonzalez", "Scott", "Nelson",
+    "Brandon", "Carter", "Benjamin", "Mitchell", "Samuel", "Perez", "Gregory", "Roberts",
 ];
+
+const placeholderBios = [
+    "led the club with a focus on expanding our youth services programs.",
+    "pioneered our club's first international service project.",
+    "focused on increasing local community engagement and membership.",
+    "championed environmental projects, including the annual tree planting initiative.",
+    "was instrumental in securing a major grant for our literacy program.",
+    "strengthened our club's foundation and administrative processes.",
+    "is remembered for their charismatic leadership and memorable fellowship events.",
+    "guided the club through a period of significant technological adoption.",
+    "initiated the club's signature health camp project.",
+    "enhanced our public image and outreach efforts within the community.",
+];
+
+const generatePastPresidents = () => {
+    const presidents = [];
+    const currentYear = new Date().getFullYear();
+    for (let year = 2022; year >= 1988; year--) {
+        const nameIndex = (year - 1988) % placeholderNames.length;
+        const bioIndex = (year - 1988) % placeholderBios.length;
+        
+        let name = `President ${placeholderNames[nameIndex]}`;
+        const genderHint = (year % 4 === 0 || year % 4 === 1) ? 'woman' : 'man';
+        if (genderHint === 'woman') {
+            // A simple way to get some female names
+            const femaleNames = ["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Karen"];
+            name = `President ${femaleNames[(year - 1988) % femaleNames.length]}`;
+        }
+        
+        presidents.push({
+            name: name,
+            term: `${year}-${year + 1}`,
+            bio: `${name} ${placeholderBios[bioIndex]} During their term from ${year} to ${year + 1}, they made significant contributions.`,
+            achievements: [],
+            imageUrl: `https://picsum.photos/400/400?random=${year}`,
+            aiHint: `${genderHint} portrait`
+        });
+    }
+    return presidents;
+};
+
+export const pastPresidents = generatePastPresidents();
 
 export const projects = [
   {
