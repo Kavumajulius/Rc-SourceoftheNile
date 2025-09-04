@@ -103,10 +103,10 @@ export const resourceLinks = [
     {
         category: "Rotary International",
         links: [
-            { title: "Rotary International Home", url: "#" },
-            { title: "My Rotary Login", url: "#" },
+            { title: "My Rotary", url: "#" },
             { title: "Rotary Learning Center", url: "#" },
             { title: "The Rotary Foundation", url: "#" },
+            { title: "End Polio Now", url: "#" },
         ]
     },
     {
@@ -114,14 +114,14 @@ export const resourceLinks = [
         links: [
             { title: "District 9214 Website", url: "#" },
             { title: "District Events Calendar", url: "#" },
-            { title: "District Leadership Directory", url: "#" },
+            { title: "District Leadership", url: "#" },
         ]
     },
     {
         category: "Club Resources",
         links: [
-            { title: "Club Constitution & Bylaws", url: "#" },
-            { title: "Membership Application Form", url: "#" },
+            { title: "Club Constitution", url: "#" },
+            { title: "Membership Form", url: "#" },
         ]
     }
 ];
