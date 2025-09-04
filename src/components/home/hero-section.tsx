@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-gray-50 overflow-hidden min-h-screen">
+    <section className="relative bg-gray-50 overflow-hidden">
       {/* Header Navigation */}
       <header className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between py-6 px-8">
         {/* User testimonial with avatars */}
@@ -40,8 +40,8 @@ export default function HeroSection() {
         </Button>
       </header>
 
-      {/* Main Content Container */}
-      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-16 relative">
+      {/* Main Content Container - Increased bottom padding to ensure visibility */}
+      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-32 relative h-[980px]">
         
         {/* Top Right - Community service image - EXACT SIZE: 256px × 192px */}
         <motion.div
