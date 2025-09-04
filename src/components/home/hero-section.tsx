@@ -78,16 +78,16 @@ export default function HeroSection() {
           {/* Right: Images + Badges */}
           <div className="relative flex flex-col items-center">
             <motion.div
-              className="rounded-3xl overflow-hidden shadow-2xl w-64 h-48"
+              className="rounded-3xl overflow-hidden shadow-2xl w-64 h-[455px]"
               initial={{ opacity: 0, scale: 0.8, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             >
               <Image
-                src="https://picsum.photos/256/192"
+                src="https://picsum.photos/270/480"
                 alt="Community Service"
-                width={256}
-                height={192}
+                width={270}
+                height={480}
                 className="w-full h-full object-cover"
               />
             </motion.div>
