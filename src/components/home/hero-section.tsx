@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="relative bg-background overflow-hidden">
-      <div className="container mx-auto max-w-7xl px-8 py-24">
+      <div className="container mx-auto max-w-7xl px-8 pt-24 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left: Main Typography */}
@@ -72,6 +72,24 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
+      </div>
+      
+      {/* New Full-Width Image Section */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <motion.div
+            className="relative w-full h-[540px] rounded-[20px] overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+        >
+            <Image
+                src="https://picsum.photos/1980/1080?random=11"
+                alt="Service project in the field"
+                fill
+                className="object-cover"
+                data-ai-hint="community project"
+            />
+        </motion.div>
       </div>
     </section>
   );
