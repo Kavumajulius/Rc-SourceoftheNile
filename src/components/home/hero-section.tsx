@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -170,9 +169,9 @@ export default function HeroSection() {
       </div>
       
       {/* Bottom Image - Full Width */}
-      <div className="w-full h-[540px]">
+      <div className="w-full h-[540px] px-5 pb-5">
         <motion.div
-            className="w-full h-full"
+            className="w-full h-full relative"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
@@ -180,9 +179,8 @@ export default function HeroSection() {
           <Image 
             src="https://picsum.photos/1920/1080" 
             alt="Rotary Club Members"
-            width={1920}
-            height={1080}
-            className="w-full h-full object-cover"
+            fill
+            className="w-full h-full object-cover rounded-[20px]"
             data-ai-hint="teamwork community"
           />
         </motion.div>
