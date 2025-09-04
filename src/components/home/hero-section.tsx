@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -20,9 +21,13 @@ export default function HeroSection() {
             200+ Members Serving With Impact
           </span>
         </div>
-        <Button className="bg-black text-white hover:bg-gray-800 rounded-full px-6 py-2 text-sm font-semibold">
-          Rotary Club
-        </Button>
+        <Button
+                size="lg"
+                className="bg-lime-400 hover:bg-lime-500 text-black rounded-full px-8 py-3 font-semibold text-lg transition-all group"
+              >
+                Join Today{" "}
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
       </header>
 
       {/* Hero Content */}
@@ -66,13 +71,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
             >
-              <Button
-                size="lg"
-                className="bg-lime-400 hover:bg-lime-500 text-black rounded-full px-8 py-3 font-semibold text-lg transition-all group"
-              >
-                Join Today{" "}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+             
             </motion.div>
           </div>
 
