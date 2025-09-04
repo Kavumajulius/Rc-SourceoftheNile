@@ -7,6 +7,7 @@ import ImpactStatsSection from "@/components/home/impact-stats-section";
 import MembershipSection from "@/components/home/membership-section";
 import CommunityProjectsSection from "@/components/home/community-projects-section";
 import FellowshipSection from "@/components/home/fellowship-section";
+import LeadersSection from "@/components/home/leaders-section";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <CommunityProjectsSection />
       <MembershipSection />
       <FellowshipSection />
+      <LeadersSection />
       <ContactSection />
     </div>
   );
