@@ -8,6 +8,7 @@ import MembershipSection from "@/components/home/membership-section";
 import SignatureProjectsSection from "@/components/home/signature-projects-section";
 import FellowshipSection from "@/components/home/fellowship-section";
 import LeadersSection from "@/components/home/leaders-section";
+import TestimonialSection from "@/components/home/testimonial-section";
 import ValuePropSection from "@/components/home/value-prop-section";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <FellowshipSection />
       <LeadersSection />
       <ImpactStatsSection />
+      <TestimonialSection />
       <ContactSection />
     </div>
   );
