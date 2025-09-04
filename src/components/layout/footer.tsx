@@ -91,8 +91,9 @@ export default function Footer() {
       </div>
        {/* Stylized text */}
        <div className="w-full bg-accent text-foreground text-center py-8 overflow-hidden">
-            <h1 className="text-6xl md:text-9xl font-extrabold tracking-tighter whitespace-nowrap">
-                RC SOURCE OF THE NILE
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter leading-none">
+                <span className="block">Rotary club</span>
+                <span className="block">source of the nile</span>
             </h1>
        </div>
     </footer>
