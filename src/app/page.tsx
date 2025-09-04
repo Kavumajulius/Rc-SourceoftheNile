@@ -9,10 +9,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const AnimatedStat = ({ value, label, icon: Icon }: { value: string, label: string, icon: React.ElementType }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  // Placeholder for count-up animation logic
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    if (isInView) {
+      // A simple animation, can be replaced with a library like 'react-countup'
+      let start = 0;
+      const end = parseInt(value.replace(/[^0-9]/g, ''), 10);
+      if (isNaN(end)) return;
+      const duration = 1500;
+      const increment = end / (duration / 16);
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= end) {
+          clearInterval(timer);
+          start = end;
+        }
+        setDisplayValue(Math.ceil(start).toLocaleString() + (value.includes('+') ? '+' : ''));
+      }, 16);
+    }
+  }, [isInView, value]);
 
   return (
     <motion.div
@@ -23,8 +47,8 @@ const AnimatedStat = ({ value, label, icon: Icon }: { value: string, label: stri
       className="text-center"
     >
       <Icon className="h-12 w-12 mx-auto text-accent" />
-      <p className="mt-4 font-headline text-5xl font-bold">{value}</p>
-      <p className="mt-2 text-muted-foreground text-lg">{label}</p>
+      <p className="mt-4 font-headline text-5xl font-extrabold">{displayValue}</p>
+      <p className="mt-2 text-muted-foreground text-lg uppercase tracking-widest">{label}</p>
     </motion.div>
   );
 };
@@ -39,7 +63,7 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={className}
+      className={cn("py-20 md:py-28", className)}
     >
       {children}
     </motion.section>
@@ -49,13 +73,10 @@ const Section = ({ children, className, id }: { children: React.ReactNode, class
 export default function Home() {
   const MotionLink = motion(Link);
   const [clientEvents, setClientEvents] = useState<Event[]>([]);
-  const [year, setYear] = useState(new Date().getFullYear());
   const [galleryPhotos, setGalleryPhotos] = useState<{url: string; aiHint: string; height: number}[]>([]);
 
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
-    // Generate dates on the client-side to avoid hydration mismatch
     const eventsWithDates: Event[] = [
       {
         date: new Date(new Date().setDate(new Date().getDate() + 7)),
@@ -91,97 +112,55 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col overflow-x-hidden bg-background">
+    <div className="flex flex-col overflow-x-hidden bg-background text-primary">
       
       {/* 1. Hero Section */}
-      <section className="py-24 md:py-32 relative">
-        <div className="container mx-auto px-4 z-10 relative">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="text-left">
-              <motion.div 
-                className="inline-block bg-secondary px-4 py-2 rounded-full mb-4"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex items-center -space-x-2">
-                  <Image src="https://picsum.photos/40/40?random=1" alt="member 1" width={32} height={32} className="rounded-full border-2 border-background"/>
-                  <Image src="https://picsum.photos/40/40?random=2" alt="member 2" width={32} height={32} className="rounded-full border-2 border-background"/>
-                  <Image src="https://picsum.photos/40/40?random=3" alt="member 3" width={32} height={32} className="rounded-full border-2 border-background"/>
-                  <span className="pl-4 text-sm font-medium text-foreground/80">50+ Members with a Mission</span>
-                </div>
-              </motion.div>
-              <motion.h1 
-                className="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.7 }}
-              >
-                Lasting
-                <span className="text-foreground/20 ml-4">Change</span>
-              </motion.h1>
-              <motion.h1 
-                className="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.7 }}
-              >
-                Awaits
-              </motion.h1>
-              <motion.p 
-                className="mt-6 max-w-md text-lg text-muted-foreground"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              >
-                We are committed to helping our communities thrive. Our expert teams drive personalized, impactful projects designed to meet unique local needs.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-              >
-                <Button size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-bold px-8 py-6 text-lg group" asChild>
-                  <Link href="/events">Join Our Mission <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/></Link>
-                </Button>
-              </motion.div>
-            </div>
-            <motion.div 
-              className="relative h-[70vh] w-full rounded-2xl overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <Image
-                src="https://picsum.photos/1200/800"
+      <section className="relative h-[80vh] min-h-[600px] flex items-center">
+         <div className="absolute inset-0">
+             <Image
+                src="https://picsum.photos/1800/1200"
                 alt="Community project by RC Source of the Nile"
                 fill
                 className="object-cover"
                 data-ai-hint="community project women"
                 priority
               />
-              <div className="absolute inset-0 bg-black/30"></div>
-              <motion.div 
-                className="absolute bottom-6 left-6 bg-background/80 backdrop-blur-sm p-4 rounded-xl shadow-lg"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
+              <div className="absolute inset-0 bg-primary/40"></div>
+         </div>
+        <div className="container mx-auto px-4 z-10 relative">
+            <div className="max-w-2xl text-left">
+              <motion.h1 
+                className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.7 }}
               >
-                <p className="font-bold">RC Source of the Nile</p>
-                <p className="text-sm text-muted-foreground">Connect with us for personalized advice.</p>
+                Lasting Change Awaits
+              </motion.h1>
+              <motion.p 
+                className="mt-6 max-w-md text-lg text-white/90"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                We are committed to helping our communities thrive. Our expert teams drive personalized, impactful projects designed to meet unique local needs.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                <Button size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/80 rounded-full font-bold px-8 py-6 text-lg group" asChild>
+                  <Link href="/events">Join Our Mission <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/></Link>
+                </Button>
               </motion.div>
-            </motion.div>
-          </div>
+            </div>
         </div>
       </section>
 
       {/* 2. Impact Stats Section */}
-      <Section className="py-20 md:py-28">
+      <Section className="bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-headline text-5xl font-bold">1000+</h2>
-            <p className="text-lg text-muted-foreground">Lives Touched Through Our Projects</p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedStat value="5000+" label="Lives Impacted" icon={HandHeart} />
             <AnimatedStat value="50+" label="Active Members" icon={Users} />
@@ -191,24 +170,24 @@ export default function Home() {
       </Section>
       
       {/* 3. Community Projects Section */}
-      <Section className="py-20 md:py-28 bg-primary text-primary-foreground">
+      <Section>
         <div className="container mx-auto px-4">
-          <div className="text-left mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Signature Community Projects</h2>
-            <p className="mt-4 max-w-xl text-lg text-primary-foreground/80">Discover the impactful projects our club has undertaken to serve our community and the world.</p>
+          <div className="text-center mb-12">
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Our Work</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Signature Community Projects</p>
           </div>
           <motion.div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.slice(0, 3).map((project, index) => (
               <MotionLink href="/projects" key={index} whileHover={{ y: -8 }} className="block">
-                <Card className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground overflow-hidden h-full group">
+                <Card className="bg-card text-card-foreground overflow-hidden h-full group transition-shadow hover:shadow-xl rounded-lg">
                   <div className="relative h-64 w-full overflow-hidden">
                     <Image src={project.imageUrl} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" data-ai-hint={project.aiHint} />
                   </div>
                   <CardContent className="p-6">
-                    <CardTitle>{project.title}</CardTitle>
-                    <p className="mt-2 text-sm text-primary-foreground/70 line-clamp-2">{project.description}</p>
-                     <div className="p-0 mt-4 text-accent font-bold flex items-center">
-                        View Project <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
+                    <CardTitle className="font-headline text-xl font-bold">{project.title}</CardTitle>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{project.description}</p>
+                     <div className="p-0 mt-4 text-accent font-bold flex items-center text-sm">
+                        LEARN MORE <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
                     </div>
                   </CardContent>
                 </Card>
@@ -219,13 +198,13 @@ export default function Home() {
       </Section>
 
       {/* 4. Upcoming Events Section */}
-      <Section id="upcoming-events" className="py-20 md:py-28">
+      <Section id="upcoming-events" className="bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="text-left mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Upcoming Events</h2>
-            <p className="mt-4 max-w-xl text-lg text-muted-foreground">Join us for our upcoming meetings, projects, and fellowship events.</p>
+          <div className="text-center mb-12">
+             <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Stay Connected</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Upcoming Events</p>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-4 max-w-4xl mx-auto">
             {clientEvents.slice(0, 3).map((event, index) => (
               <motion.div
                 key={index}
@@ -234,16 +213,19 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="hover:bg-secondary/50 transition-colors">
+                <Card className="hover:bg-white transition-colors rounded-lg shadow-sm hover:shadow-lg">
                   <CardContent className="p-6 grid grid-cols-1 md:grid-cols-4 items-center gap-6">
-                    <div className="md:col-span-2">
-                      <p className="text-sm text-accent font-bold">{event.date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
-                      <h3 className="font-headline text-2xl mt-1">{event.title}</h3>
+                    <div className="flex items-center gap-4">
+                        <div className="text-center bg-accent/20 text-accent rounded-lg p-3">
+                            <p className="font-bold text-2xl">{event.date.toLocaleDateString('en-US', { day: '2-digit' })}</p>
+                            <p className="font-semibold text-xs uppercase">{event.date.toLocaleDateString('en-US', { month: 'short' })}</p>
+                        </div>
+                         <h3 className="font-headline text-xl">{event.title}</h3>
                     </div>
-                    <p className="text-muted-foreground">{event.summary}</p>
-                    <Button asChild className="rounded-full font-bold w-full md:w-auto justify-self-start md:justify-self-end group">
+                    <p className="text-muted-foreground md:col-span-2">{event.summary}</p>
+                    <Button asChild className="rounded-full font-bold w-full md:w-auto justify-self-start md:justify-self-end group bg-primary text-primary-foreground hover:bg-primary/90">
                       <Link href="/events">
-                        Details <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
+                        View Details <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1"/>
                       </Link>
                     </Button>
                   </CardContent>
@@ -255,11 +237,11 @@ export default function Home() {
       </Section>
 
       {/* 5. Leadership Team Section */}
-      <Section className="py-20 md:py-28 bg-secondary">
+      <Section>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl font-bold md:text-5xl">Our Leadership</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Meet the dedicated team guiding our club's mission.</p>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Our Team</h2>
+            <p className="mt-2 font-headline text-4xl font-bold md:text-5xl">Club Leadership</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {pastPresidents.slice(0, 4).map((leader, index) => (
@@ -270,7 +252,6 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                whileHover={{ y: -10 }}
               >
                 <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
                   <Image
@@ -291,11 +272,11 @@ export default function Home() {
       </Section>
 
       {/* 6. Past Presidents Section */}
-       <Section id="past-presidents" className="py-20 md:py-28">
+       <Section id="past-presidents" className="bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Our Legacy of Leadership</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">A tribute to those who have guided our club through the years.</p>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Our Heritage</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">A Legacy of Leadership</p>
           </div>
           <div className="relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
@@ -346,11 +327,12 @@ export default function Home() {
       </Section>
       
       {/* 7. Membership Information Section */}
-      <Section id="membership" className="py-20 md:py-28 bg-primary text-primary-foreground">
+      <Section id="membership">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Become a Member</h2>
-            <p className="mt-4 text-lg text-primary-foreground/80">Join a global network of volunteers making a difference. As a member, you will:</p>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Join Us</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Become a Member</p>
+            <p className="mt-4 text-lg text-muted-foreground">Join a global network of volunteers making a difference. As a member, you will:</p>
             <ul className="mt-6 space-y-4">
               {[
                 "Connect with diverse perspectives",
@@ -381,11 +363,11 @@ export default function Home() {
       </Section>
 
       {/* 8. Photo Gallery Section */}
-      <Section id="gallery" className="py-20 md:py-28">
+      <Section id="gallery" className="bg-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Moments of Service</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">A glimpse into our recent fellowships, projects, and events.</p>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Our Moments</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Glimpses of Service & Fellowship</p>
           </div>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             {galleryPhotos.map((photo, index) => (
@@ -396,7 +378,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
               >
                   <Image
                     src={photo.url}
@@ -413,11 +395,11 @@ export default function Home() {
       </Section>
 
       {/* 9. Resources & Links */}
-      <Section id="resources" className="py-20 md:py-28 bg-secondary">
+      <Section id="resources">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Member Resources</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Quick access to essential Rotary tools and information.</p>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Information Hub</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Member Resources</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
               {resourceLinks.flatMap(c => c.links).slice(0, 4).map((link, index) => (
@@ -426,10 +408,12 @@ export default function Home() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block p-6 bg-background rounded-lg text-center shadow hover:shadow-xl transition-shadow duration-300"
+                  className="block p-6 bg-secondary rounded-lg text-center shadow hover:shadow-xl transition-all duration-300 group"
                   whileHover={{ y: -5 }}
                 >
-                  <LinkIcon className="h-8 w-8 mx-auto text-accent"/>
+                  <div className="bg-accent text-accent-foreground rounded-full w-16 h-16 flex items-center justify-center mx-auto transition-transform group-hover:scale-110">
+                    <LinkIcon className="h-8 w-8"/>
+                  </div>
                   <h3 className="mt-4 font-headline text-lg font-semibold">{link.title}</h3>
                 </MotionLink>
               ))}
@@ -439,9 +423,10 @@ export default function Home() {
 
 
       {/* 10. Get in Touch Section */}
-      <Section id="contact" className="py-20 md:py-28">
+      <Section id="contact" className="bg-secondary">
         <div className="container mx-auto px-4 text-center">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold">Get In Touch</h2>
+            <h2 className="font-headline text-sm uppercase tracking-widest text-muted-foreground">Contact Us</h2>
+            <p className="mt-2 font-headline text-4xl md:text-5xl font-bold">Get In Touch</p>
             <p className="mt-4 max-w-xl mx-auto text-lg text-muted-foreground">We're here to answer your questions and welcome you to our community.</p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -452,7 +437,7 @@ export default function Home() {
               </a>
             </motion.div>
             <div className="mt-10">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full font-bold px-8 py-6 text-lg group" asChild>
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full font-bold px-8 py-6 text-lg group" asChild>
                 <Link href="/events">Contact Us<ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/></Link>
               </Button>
             </div>
