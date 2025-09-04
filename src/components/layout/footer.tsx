@@ -2,18 +2,23 @@
 "use client"
 
 import Link from "next/link";
-import { LogoIcon } from "../icons";
-import { Button } from "../ui/button";
+import { ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const navLinks = [
+const mainNavLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/leadership", label: "Leadership" },
   { href: "/fellowship", label: "Fellowship" },
+];
+
+const secondaryNavLinks = [
   { href: "/events", label: "Events" },
   { href: "/resources", label: "Resources" },
 ];
+
+
+const socialLinks = ["Facebook", "Twitter", "LinkedIn", "Instagram"];
 
 export default function Footer() {
     const [year, setYear] = useState(new Date().getFullYear());
@@ -23,58 +28,73 @@ export default function Footer() {
     }, []);
 
   return (
-    <footer className="bg-foreground text-background border-t border-background/10">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-12">
-            <div className="flex flex-col items-start col-span-12 md:col-span-4">
-                <div className="flex items-center space-x-2">
-                    <LogoIcon className="h-8 w-8 text-accent" />
-                    <span className="font-bold text-lg">RC Source of the Nile</span>
+    <footer className="bg-foreground text-background">
+      <div className="container mx-auto px-4 pt-20 pb-16">
+        {/* Top bar */}
+        <div className="flex justify-between items-center pb-8 border-b border-background/20">
+            <div className="max-w-sm">
+                <p className="font-bold">A community of leaders creating positive, lasting change.</p>
+            </div>
+            <div className="hidden md:flex items-center gap-6">
+                {socialLinks.map(link => (
+                    <Link href="#" key={link} className="text-sm font-semibold uppercase tracking-wider hover:text-accent transition-colors">
+                        {link}
+                    </Link>
+                ))}
+            </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="py-16">
+            <a href="mailto:info@rcsourcethenile.org" className="text-4xl md:text-6xl font-bold flex items-center group hover:text-accent transition-colors">
+                info@rcsourcethenile.org
+                <ArrowUpRight className="w-10 h-10 ml-4 transition-transform group-hover:translate-x-2 group-hover:-translate-y-2" />
+            </a>
+
+            <div className="grid md:grid-cols-3 gap-8 mt-16">
+                <div>
+                     {/* Intentionally left blank for spacing to match design */}
                 </div>
-                <p className="mt-4 text-muted-foreground text-sm max-w-xs">
-                    A community of leaders creating positive, lasting change in our communities and around the world.
-                </p>
-            </div>
-            <div className="col-span-6 md:col-span-2">
-                <h3 className="font-bold text-background mb-4">Menu</h3>
-                <ul className="space-y-2">
-                    {navLinks.map(link => (
-                        <li key={link.label}>
-                            <Link href={link.href} className="text-sm text-muted-foreground hover:text-background hover:underline">
-                                {link.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className="col-span-6 md:col-span-2">
-                 <h3 className="font-bold text-background mb-4">Follow Us</h3>
-                 <ul className="space-y-2">
-                    {["Facebook", "Twitter", "LinkedIn", "Instagram"].map(link => (
-                        <li key={link}>
-                            <Link href="#" className="text-sm text-muted-foreground hover:text-background hover:underline">
-                                {link}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-            <div className="col-span-12 md:col-span-4">
-                 <h3 className="font-bold text-background mb-4">Get In Touch</h3>
-                 <p className="text-sm text-muted-foreground">We're here to answer your questions and welcome you to our community.</p>
-                 <a href="mailto:info@rcsourcethenile.org" className="text-2xl font-bold mt-2 text-background hover:text-accent transition-colors block">
-                    info@rcsourcethenile.org
-                 </a>
+                <div>
+                    <h3 className="font-bold uppercase tracking-wider mb-4">Explore</h3>
+                    <ul className="space-y-3">
+                        {mainNavLinks.map(link => (
+                            <li key={link.label}>
+                                <Link href={link.href} className="text-muted-foreground hover:text-background transition-colors">
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                 <div>
+                    <h3 className="font-bold uppercase tracking-wider mb-4">Engage</h3>
+                    <ul className="space-y-3">
+                        {secondaryNavLinks.map(link => (
+                            <li key={link.label}>
+                                <Link href={link.href} className="text-muted-foreground hover:text-background transition-colors">
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
-        <div className="mt-12 border-t border-background/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; {year} RC Source of the Nile. All rights reserved.</p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-                <Link href="#" className="hover:underline">Privacy Policy</Link>
-                <Link href="#" className="hover:underline">Terms of Service</Link>
-            </div>
+
+        {/* Bottom bar */}
+         <div className="pt-8 border-t border-background/20 flex justify-between items-center text-sm text-muted-foreground">
+            <p>&copy; {year} All Rights Reserved.</p>
+            <p>People of Action</p>
         </div>
+
       </div>
+       {/* Stylized text */}
+       <div className="w-full bg-accent text-foreground text-center py-8 overflow-hidden">
+            <h1 className="text-6xl md:text-9xl font-extrabold tracking-tighter whitespace-nowrap">
+                RC SOURCE OF THE NILE
+            </h1>
+       </div>
     </footer>
   );
 }
