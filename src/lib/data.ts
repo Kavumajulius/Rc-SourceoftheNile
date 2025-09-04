@@ -78,21 +78,26 @@ export const fellowshipUpdates = [
   },
 ];
 
-export const events = [
+export interface Event {
+  date: Date;
+  title: string;
+  summary: string;
+  location: string;
+}
+
+// Event data is now generated on the client in page.tsx to avoid hydration errors
+export const events: Omit<Event, 'date'>[] = [
   {
-    date: new Date(new Date().setDate(new Date().getDate() + 7)),
     title: "Weekly Fellowship Meeting",
     summary: "Join us for our regular weekly meeting. This week's topic: 'The Role of Technology in Community Service'.",
     location: "Grand Imperial Hotel",
   },
   {
-    date: new Date(new Date().setDate(new Date().getDate() + 14)),
     title: "Tree Planting Day",
     summary: "As part of our environmental conservation efforts, we will be planting 1,000 trees at the community park.",
     location: "Jinja Community Park",
   },
   {
-    date: new Date(new Date().setDate(new Date().getDate() + 21)),
     title: "Visit to the 'Literacy for All' Project Site",
     summary: "A field visit to one of the schools benefiting from our literacy project. Come and see the impact we're making.",
     location: "Nile Primary School",

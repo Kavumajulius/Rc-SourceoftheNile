@@ -1,13 +1,14 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { events, projects, pastPresidents, fellowshipUpdates, resourceLinks } from "@/lib/data";
+import { projects, pastPresidents, fellowshipUpdates, resourceLinks, type Event } from "@/lib/data";
 import { ArrowRight, HandHeart, Users, BarChart, Calendar, Clock, MapPin, Link as LinkIcon, Menu, X, Check } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const AnimatedStat = ({ value, label, icon: Icon }: { value: string, label: string, icon: React.ElementType }) => {
   const ref = useRef(null);
@@ -28,11 +29,12 @@ const AnimatedStat = ({ value, label, icon: Icon }: { value: string, label: stri
   );
 };
 
-const Section = ({ children, className }: { children: React.ReactNode, className?: string }) => {
+const Section = ({ children, className, id }: { children: React.ReactNode, className?: string, id?: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   return (
     <motion.section
+      id={id}
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -46,6 +48,33 @@ const Section = ({ children, className }: { children: React.ReactNode, className
 
 export default function Home() {
   const MotionLink = motion(Link);
+  const [clientEvents, setClientEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    // Generate dates on the client-side to avoid hydration mismatch
+    const eventsWithDates: Event[] = [
+      {
+        date: new Date(new Date().setDate(new Date().getDate() + 7)),
+        title: "Weekly Fellowship Meeting",
+        summary: "Join us for our regular weekly meeting. This week's topic: 'The Role of Technology in Community Service'.",
+        location: "Grand Imperial Hotel",
+      },
+      {
+        date: new Date(new Date().setDate(new Date().getDate() + 14)),
+        title: "Tree Planting Day",
+        summary: "As part of our environmental conservation efforts, we will be planting 1,000 trees at the community park.",
+        location: "Jinja Community Park",
+      },
+      {
+        date: new Date(new Date().setDate(new Date().getDate() + 21)),
+        title: "Visit to the 'Literacy for All' Project Site",
+        summary: "A field visit to one of the schools benefiting from our literacy project. Come and see the impact we're making.",
+        location: "Nile Primary School",
+      },
+    ];
+    setClientEvents(eventsWithDates);
+  }, []);
+
 
   return (
     <div className="flex flex-col overflow-x-hidden bg-background">
@@ -182,7 +211,7 @@ export default function Home() {
             <p className="mt-4 max-w-xl text-lg text-muted-foreground">Join us for our upcoming meetings, projects, and fellowship events.</p>
           </div>
           <div className="space-y-4">
-            {events.slice(0, 3).map((event, index) => (
+            {clientEvents.slice(0, 3).map((event, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -50 }}
@@ -417,3 +446,4 @@ export default function Home() {
     </div>
   );
 }
+

@@ -1,6 +1,10 @@
+
+"use client"
+
 import Link from "next/link";
 import { LogoIcon } from "../icons";
 import { Button } from "../ui/button";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -12,6 +16,12 @@ const navLinks = [
 ];
 
 export default function Footer() {
+    const [year, setYear] = useState(new Date().getFullYear());
+
+    useEffect(() => {
+        setYear(new Date().getFullYear());
+    }, []);
+
   return (
     <footer className="bg-secondary border-t">
       <div className="container mx-auto px-4 py-16">
@@ -58,7 +68,7 @@ export default function Footer() {
             </div>
         </div>
         <div className="mt-12 border-t pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} RC Source of the Nile. All rights reserved.</p>
+            <p>&copy; {year} RC Source of the Nile. All rights reserved.</p>
             <div className="flex gap-4 mt-4 md:mt-0">
                 <Link href="#" className="hover:underline">Privacy Policy</Link>
                 <Link href="#" className="hover:underline">Terms of Service</Link>
