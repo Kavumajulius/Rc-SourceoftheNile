@@ -91,61 +91,10 @@ const ValueCard = ({
 const MobileAppMockup = () => (
   <div className="relative w-full max-w-sm mx-auto h-[600px] bg-white rounded-3xl shadow-2xl overflow-hidden">
     {/* Phone Frame */}
-    <div className="absolute inset-0 bg-gradient-to-b from-blue-100 to-blue-200 p-4">
-      {/* Status Bar */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex gap-2">
-          <Button variant="ghost" size="sm" className="text-xs">Log In</Button>
-          <Button variant="ghost" size="sm" className="text-xs bg-white/20 rounded-full">Sign Up</Button>
-        </div>
-        <div className="flex gap-1">
-          <div className="w-1 h-1 bg-black/50 rounded-full"></div>
-          <div className="w-1 h-1 bg-black/50 rounded-full"></div>
-          <div className="w-1 h-1 bg-black/50 rounded-full"></div>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold hidden sm:inline">ROTARY SOURCE NILE</span>
-          <Button size="icon" className="w-8 h-8 bg-blue-600 text-white rounded-full">
-            <Menu className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Chat Bubble */}
-      <div className="bg-white/90 rounded-2xl p-3 mb-4 max-w-[200px]">
-        <p className="text-xs text-gray-700">
-          Hello Rotarians! 👋 Join us in our mission to serve communities along the Nile! 🌍
-        </p>
-        <div className="flex items-center gap-2 mt-2">
-          <Heart className="h-4 w-4 text-red-500" />
-          <span className="text-xs">❤️</span>
-        </div>
-      </div>
-
-      {/* Audio Message */}
-      <div className="bg-white/90 rounded-2xl p-3 mb-4 max-w-[180px]">
-        <div className="flex items-center gap-2">
-          <Button size="icon" className="w-8 h-8 rounded-full bg-blue-500">
-            <Play className="h-3 w-3 text-white" />
-          </Button>
-          <div className="flex-1 h-1 bg-gray-300 rounded-full">
-            <div className="w-1/3 h-1 bg-blue-500 rounded-full"></div>
-          </div>
-        </div>
-        <div className="flex justify-between items-center mt-1">
-          <span className="text-xs text-gray-500">00:15</span>
-          <div className="w-6 h-6 rounded-full bg-yellow-400"></div>
-        </div>
-      </div>
-
-      {/* Service Above Self message */}
-      <div className="bg-white/90 rounded-2xl p-3 mb-4 max-w-[150px]">
-        <p className="text-xs text-gray-700">Service Above Self 🌻</p>
-      </div>
-
-      {/* Project Image Card */}
-      <div className="bg-white rounded-2xl p-2 mb-4 max-w-[160px]">
-        <div className="w-full h-20 bg-green-200 rounded-xl mb-2 relative overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-b from-blue-100 to-blue-200 p-4 flex flex-col gap-4">
+      {/* Project Image 1 */}
+      <div className="bg-white rounded-2xl p-2 w-full h-1/2 shadow-sm">
+        <div className="w-full h-full bg-gray-200 rounded-xl relative overflow-hidden">
           <Image
             src="https://picsum.photos/400/300?random=50"
             alt="Rotary Project"
@@ -153,24 +102,18 @@ const MobileAppMockup = () => (
             className="object-cover"
           />
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex gap-1">
-            <Heart className="h-3 w-3 text-red-500" />
-            <MessageCircle className="h-3 w-3 text-blue-500" />
-            <Share2 className="h-3 w-3 text-gray-500" />
-          </div>
-          <span className="text-xs text-gray-500">📍</span>
-        </div>
       </div>
-
-      {/* Sunflower Image */}
-      <div className="absolute bottom-0 right-0 w-32 h-32">
-        <Image
-          src="https://picsum.photos/400/400?random=sunflower"
-          alt="Sunflower"
-          fill
-          className="object-cover"
-        />
+      
+      {/* Project Image 2 */}
+      <div className="bg-white rounded-2xl p-2 w-full h-1/2 shadow-sm">
+        <div className="w-full h-full bg-gray-200 rounded-xl relative overflow-hidden">
+          <Image
+            src="https://picsum.photos/400/400?random=sunflower"
+            alt="Rotary Community"
+            fill
+            className="object-cover"
+          />
+        </div>
       </div>
     </div>
   </div>

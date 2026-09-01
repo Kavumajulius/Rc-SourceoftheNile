@@ -15,11 +15,10 @@ export async function selectBestPhoto(
   formData: FormData
 ): Promise<PhotoSelectionState> {
   const photoDataUris = formData.getAll("photoDataUris") as string[];
-
   if (photoDataUris.length === 0) {
     return { error: "Please upload at least one photo." };
   }
-
+  
   try {
     const result = await photoSelectionForWebsite({ photoDataUris });
     return { result };

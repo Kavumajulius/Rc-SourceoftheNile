@@ -1,4 +1,3 @@
-'use server';
 /**
  * @fileOverview An AI tool to analyze uploaded photos, selecting the highest quality images that prominently feature local beneficiaries of our projects
  *
