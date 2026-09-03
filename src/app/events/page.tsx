@@ -1,148 +1,173 @@
 
 "use client";
 
-import { events } from "@/lib/data";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { MapPin, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
 export default function EventsPage() {
-  const [clientEvents, setClientEvents] = useState<typeof events & { date: Date }[]>([]);
-
-  useEffect(() => {
-    const eventsWithDates = events.map((event, index) => ({
-      ...event,
-      date: new Date(new Date().setDate(new Date().getDate() + 7 * (index + 1))),
-    }));
-    setClientEvents(eventsWithDates);
-  }, []);
-
-  const sortedEvents = clientEvents.sort((a, b) => a.date.getTime() - b.date.getTime());
+  const eventsData = [
+    {
+      dayName: "Tue",
+      dayNum: "29",
+      monthName: "October, 2024",
+      badgeBg: "bg-emerald-500 text-black font-bold",
+      events: [
+        {
+          title: "AM - Innovation Challenge Finale",
+          location: "TBD",
+          time: "9:00 AM"
+        },
+        {
+          title: "Ibom Heritage Cultural Night",
+          subtitle: "Strictly by Reservation",
+          location: "Unity Museum, Uyo",
+          time: "4:00 PM"
+        }
+      ]
+    },
+    {
+      dayName: "Wed",
+      dayNum: "30",
+      monthName: "October, 2024",
+      badgeBg: "bg-blue-600 text-white font-bold",
+      events: [
+        {
+          title: "Conference Day",
+          location: "Venue: Ibom Golf Resort",
+          time: "9:00 AM"
+        }
+      ]
+    },
+    {
+      dayName: "Thur",
+      dayNum: "31",
+      monthName: "October, 2024",
+      badgeBg: "bg-amber-500 text-black font-bold",
+      events: [
+        {
+          title: "Career Fair & Creative Showcase",
+          location: "Ibom e-library",
+          time: "10:00 AM"
+        }
+      ]
+    },
+    {
+      dayName: "Fri",
+      dayNum: "01",
+      monthName: "November, 2024",
+      badgeBg: "bg-pink-600 text-white font-bold",
+      events: [
+        {
+          title: "Ecosystem Hub Tours",
+          location: "Muster point to be announced",
+          time: ""
+        }
+      ]
+    },
+    {
+      dayName: "Sat",
+      dayNum: "02",
+      monthName: "November, 2024",
+      badgeBg: "bg-cyan-500 text-black font-bold",
+      events: [
+        {
+          title: "Dev Fest Uyo",
+          location: "Je-Nissi Event Center, 7 Akpa Ube Street Uyo",
+          time: "10:00 AM"
+        }
+      ]
+    }
+  ];
 
   return (
-    <div className="flex flex-col bg-background">
-      {/* 1. Hero Banner */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative h-[300px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
-      >
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <Image
-            src="https://picsum.photos/1800/1200?random=90"
-            alt="Rotary Event"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="community event"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="relative z-10 container mx-auto px-4">
-          <motion.h1
-            className="text-4xl md:text-5xl font-extrabold tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-          >
-            Events
-          </motion.h1>
-          <motion.p
-            className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white/90"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7 }}
-          >
-            Celebrating Our Moments Together
-          </motion.p>
-        </div>
-      </motion.section>
-
-      {/* 2. Upcoming Events Section */}
-      <div className="container mx-auto px-4 py-12 md:py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold md:text-5xl">Upcoming Events</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
-            Join us for our upcoming meetings, projects, and fellowship events.
-          </p>
+    <div className="flex flex-col bg-[#0b0b0c] text-white min-h-screen py-12 px-4 md:px-8">
+      {/* Outer Card Wrapper matching reference image */}
+      <div className="max-w-3xl mx-auto w-full bg-[#161618] border border-zinc-800/80 rounded-2xl p-6 md:p-12 shadow-2xl">
+        
+        {/* Header */}
+        <div className="mb-12 flex items-center space-x-3">
+          <div className="w-3.5 h-3.5 bg-emerald-500 rounded-[2px]" />
+          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
+            Week at a glance
+          </h1>
         </div>
 
-        <div className="space-y-8">
-          {sortedEvents.map((event, index) => (
-             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: index * 0.15 }}
-            >
-              <Card className="flex flex-col md:flex-row transition-shadow duration-300 hover:shadow-xl overflow-hidden">
-                <div className="flex flex-col items-center justify-center bg-secondary p-6 text-center md:w-48">
-                  <p className="text-5xl font-bold text-primary">{event.date.toLocaleDateString('en-US', { day: '2-digit' })}</p>
-                  <p className="text-lg font-semibold text-primary">{event.date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase()}</p>
-                  <p className="text-sm text-muted-foreground">{event.date.getFullYear()}</p>
+        {/* Events List */}
+        <div className="space-y-10">
+          {eventsData.map((group, groupIndex) => (
+            <div key={groupIndex} className="relative">
+              {groupIndex > 0 && (
+                <div className="border-t border-zinc-800/80 my-8" />
+              )}
+
+              <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+                {/* Left Date Block */}
+                <div className="w-full md:w-44 shrink-0 flex md:flex-col items-center md:items-start justify-between md:justify-start">
+                  <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-1">
+                    <span className={`inline-block px-3 py-0.5 text-xs rounded-md uppercase tracking-wider ${group.badgeBg}`}>
+                      {group.dayName}
+                    </span>
+                    <div className="flex items-baseline md:flex-col">
+                      <span className="text-4xl md:text-5xl font-extrabold tracking-tight text-white mr-2 md:mr-0">
+                        {group.dayNum}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-xs md:text-sm text-zinc-400 font-medium mt-1">
+                    {group.monthName}
+                  </span>
                 </div>
-                <div className="flex-1 p-4 md:p-0">
-                  <CardHeader>
-                    <CardTitle className="text-xl md:text-2xl">{event.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="mb-4">{event.summary}</CardDescription>
-                    <div className="flex flex-col space-y-2 text-sm text-muted-foreground">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2" />
-                        <span>{event.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <Clock className="h-4 w-4 mr-2" />
-                        <span>{event.date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</span>
-                      </div>
-                      <div className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-2" />
-                        <span>{event.location}</span>
+
+                {/* Vertical Blue/Cyan Divider */}
+                <div className="hidden md:block w-[2px] bg-sky-500/80 self-stretch my-1 rounded-full" />
+
+                {/* Right Events Column */}
+                <div className="flex-1 space-y-6 w-full">
+                  {group.events.map((evt, evtIdx) => (
+                    <div key={evtIdx} className="space-y-1.5">
+                      <h3 className="text-lg md:text-xl font-bold text-white">
+                        {evt.title}
+                      </h3>
+                      {evt.subtitle && (
+                        <p className="text-sm font-medium text-zinc-300">
+                          {evt.subtitle}
+                        </p>
+                      )}
+                      <div className="flex flex-wrap items-center gap-4 text-xs md:text-sm text-zinc-400 pt-1">
+                        {evt.location && (
+                          <div className="flex items-center text-zinc-300">
+                            <MapPin className="h-3.5 w-3.5 mr-1.5 text-sky-400 shrink-0" />
+                            <span>{evt.location}</span>
+                          </div>
+                        )}
+                        {evt.time && (
+                          <div className="flex items-center text-zinc-300">
+                            <Clock className="h-3.5 w-3.5 mr-1.5 text-amber-400 shrink-0" />
+                            <span>{evt.time}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  </CardContent>
+                  ))}
                 </div>
-              </Card>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-       {/* 5. Call-to-Action Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 1 }}
-        className="py-16 md:py-20 bg-accent text-accent-foreground"
-      >
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold">
-            Join us at our next event and make a difference.
-          </h2>
-          <p className="mt-4 text-base md:text-lg text-accent-foreground/80 max-w-xl mx-auto">
-            Your skills, passion, and time can help us create even greater impact.
-          </p>
-          <div className="mt-8">
-             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/80 rounded-full font-bold px-8 py-6 text-lg group" asChild>
-                <Link href="/leadership#join-us">
-                    Join Us <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform"/>
-                </Link>
-            </Button>
-          </div>
+
+        {/* Footer info */}
+        <div className="mt-16 pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+          <span>Rotary Club of Source of the Nile • Upcoming Schedule</span>
+          <Button variant="outline" size="sm" className="bg-zinc-800 text-white border-zinc-700 hover:bg-zinc-700 rounded-full" asChild>
+            <Link href="/">Back to Home</Link>
+          </Button>
         </div>
-      </motion.section>
+
+      </div>
     </div>
   );
 }
+
+

@@ -14,53 +14,21 @@ import {
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import { ParallaxComponent } from "@/components/ui/parallax-scrolling";
+import ScrollFloat from "@/components/ui/ScrollFloat";
 
 
 export default function FellowshipPage() {
   return (
     <div className="flex flex-col bg-background">
-       {/* 1. Hero Banner */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="relative h-[300px] md:h-[350px] flex items-center justify-center text-center text-white overflow-hidden"
-      >
-        <motion.div
-          className="absolute inset-0"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        >
-          <Image
-            src="https://picsum.photos/1800/1200?random=70"
-            alt="Fellowship gathering"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="fellowship event"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="relative z-10 container mx-auto px-4">
-          <motion.h1
-            className="text-4xl md:text-5xl font-extrabold tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
-          >
-            Fellowships
-          </motion.h1>
-          <motion.p
-            className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white/90"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.7 }}
-          >
-           Connecting, Sharing, Growing Together
-          </motion.p>
-        </div>
-      </motion.section>
+       {/* 1. Parallax Hero Header */}
+       <ParallaxComponent 
+         title="Fellowships"
+         subtitle="Connecting, Sharing, Growing Together"
+         image1="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80"
+         image2="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80"
+         image3="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
+       />
 
 
       <div className="container mx-auto px-4 py-12 md:py-20">

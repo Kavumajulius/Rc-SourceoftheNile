@@ -5,7 +5,7 @@ import { Users, Heart, Stethoscope, BookOpen, TreePine, Lightbulb, Globe, Award 
 
 const cardVariants = {
   hidden: { opacity: 0, scale: 0.9, y: 20 },
-  visible: (i) => ({
+  visible: (i: number) => ({
     opacity: 1,
     scale: 1,
     y: 0,
@@ -17,9 +17,66 @@ const cardVariants = {
   }),
 };
 
+const services = [
+  {
+    title: "Community Outreach",
+    location: "Jinja Main Street",
+    address: "Central Division, Jinja, Uganda",
+    time: "9:00 AM\nEAT",
+    date: { month: "DEC", day: "12", dayOfWeek: "TUE" },
+    image: "https://picsum.photos/600/800?random=301",
+    color: "from-[#2A8296] via-[#2A8296]/90 to-transparent",
+  },
+  {
+    title: "Medical Outreach",
+    location: "Community Hospital",
+    address: "Health Sector, Jinja, Uganda",
+    time: "8:30 AM\nEAT",
+    date: { month: "DEC", day: "15", dayOfWeek: "FRI" },
+    image: "https://picsum.photos/600/800?random=303",
+    color: "from-[#B93A32] via-[#B93A32]/90 to-transparent",
+  },
+  {
+    title: "Meet Rotarians",
+    location: "Rotary Club House",
+    address: "Nile Crescent, Jinja, Uganda",
+    time: "6:00 PM\nEAT",
+    date: { month: "DEC", day: "24", dayOfWeek: "SAT" },
+    image: "https://picsum.photos/600/800?random=304",
+    color: "from-[#0F4C3A] via-[#0F4C3A]/90 to-transparent",
+  },
+  {
+    title: "Youth Development",
+    location: "Jinja High School",
+    address: "Education District, Jinja",
+    time: "2:00 PM\nEAT",
+    date: { month: "JAN", day: "05", dayOfWeek: "THU" },
+    image: "https://picsum.photos/600/800?random=305",
+    color: "from-[#C46210] via-[#C46210]/90 to-transparent",
+  },
+  {
+    title: "Water & Sanitation",
+    location: "Rural Village",
+    address: "Water Project Site, Jinja",
+    time: "10:00 AM\nEAT",
+    date: { month: "JAN", day: "18", dayOfWeek: "WED" },
+    image: "https://picsum.photos/600/800?random=306",
+    color: "from-[#1D5E88] via-[#1D5E88]/90 to-transparent",
+  },
+  {
+    title: "Family Programs",
+    location: "Community Center",
+    address: "Family District, Jinja, Uganda",
+    time: "4:00 PM\nEAT",
+    date: { month: "JAN", day: "22", dayOfWeek: "SUN" },
+    image: "https://picsum.photos/600/800?random=307",
+    color: "from-[#6B3278] via-[#6B3278]/90 to-transparent",
+  }
+];
+
 export default function ServiceGallerySection() {
   return (
-    <section className="py-16 md:py-20 bg-gray-100">
+    <section className="py-16 md:py-20 bg-[#EFECE8]">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,270 +92,56 @@ export default function ServiceGallerySection() {
           </p>
         </motion.div>
 
-        {/* Grid Layout matching the reference image */}
-        <div className="grid grid-cols-12 grid-rows-6 md:grid-rows-8 gap-4 h-[1200px] md:h-[1000px]">
-          
-          {/* Top Left - Community Outreach (2x2) */}
-          <motion.div
-            custom={0}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-1 md:row-span-2 bg-white rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex flex-col">
-              <div className="flex-1 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Community Outreach</h3>
-                <p className="text-gray-600 text-sm">Reaching out to serve our neighbors with compassion and care</p>
-              </div>
-              <div className="grid grid-cols-2 gap-2 mt-4">
-                <div 
-                  className="h-16 rounded-lg bg-cover bg-center"
-                  style={{ backgroundImage: 'url(https://picsum.photos/200/200?random=301)' }}
-                />
-                <div 
-                  className="h-16 rounded-lg bg-cover bg-center"
-                  style={{ backgroundImage: 'url(https://picsum.photos/200/200?random=302)' }}
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Top Center - Live Service (tall) */}
-          <motion.div
-            custom={1}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-2 md:row-span-4 bg-gradient-to-br from-purple-900 to-blue-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: 'url(https://picsum.photos/400/800?random=303)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-            <div className="relative h-full p-6 flex flex-col justify-between text-white">
-              <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold inline-block self-start">
-                Live
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold mb-2">Medical Outreach</h3>
-                <p className="text-white/90">Providing healthcare services to underserved communities</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Top Right Small - Environmental */}
-          <motion.div
-            custom={2}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-1 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div 
-              className="h-full bg-cover bg-center"
-              style={{ backgroundImage: 'url(https://picsum.photos/400/200?random=304)' }}
-            />
-            <div className="absolute inset-0 bg-black/30" />
-          </motion.div>
-
-          {/* Top Right - Meet Rotarians */}
-          <motion.div
-            custom={3}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-6 md:col-span-3 row-span-1 md:row-span-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex flex-col justify-center text-white">
-              <h3 className="text-2xl font-bold mb-4">Meet Rotarians</h3>
-              <p className="text-blue-100 mb-4">Connect with our dedicated members</p>
-              <button className="bg-white text-blue-600 px-4 py-2 rounded-full text-sm font-semibold self-start">
-                View All
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Second Row Left - Celebrate Pride */}
-          <motion.div
-            custom={4}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-1 md:row-span-2 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex flex-col justify-center text-white">
-              <h3 className="text-2xl font-bold mb-2">Service Projects</h3>
-              <p className="text-green-100">Celebrating our community impact and achievements</p>
-            </div>
-          </motion.div>
-
-          {/* Fellowship Section */}
-          <motion.div
-            custom={5}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex items-center justify-center text-white">
-              <h3 className="text-xl font-bold">Fellowship Events</h3>
-            </div>
-          </motion.div>
-
-          {/* Bottom Left Mobile - Great for groups */}
-          <motion.div
-            custom={6}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: 'url(https://picsum.photos/400/600?random=305)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-            <div className="relative h-full p-6 flex flex-col justify-between text-white">
-              <div className="flex items-center gap-2 text-sm">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Active Projects</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-2">Youth Development</h3>
-                <p className="text-white/80 text-sm">Empowering the next generation through education and mentorship</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Center Athletic Figure */}
-          <motion.div
-            custom={7}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-6 md:col-span-2 row-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div 
-              className="h-full bg-cover bg-center bg-blue-500"
-              style={{ backgroundImage: 'url(https://picsum.photos/300/400?random=306)' }}
-            />
-          </motion.div>
-
-          {/* Water Projects */}
-          <motion.div
-            custom={8}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-4 row-span-1 bg-gradient-to-r from-red-400 to-orange-400 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex items-center text-white">
-              <h3 className="text-xl font-bold">Water & Sanitation Projects</h3>
-            </div>
-          </motion.div>
-
-          {/* Community Impact Stats */}
-          <motion.div
-            custom={9}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-6 md:col-span-2 row-span-1 md:row-span-2 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-6 flex flex-col justify-center text-white">
-              <h3 className="text-lg font-bold mb-4">Impact Statistics</h3>
-              <div className="space-y-3">
-                <div>
-                  <div className="text-2xl font-bold text-orange-400">500+</div>
-                  <div className="text-xs text-gray-400">Lives Impacted</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-400">25+</div>
-                  <div className="text-xs text-gray-400">Active Projects</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Popular Programs */}
-          <motion.div
-            custom={10}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-6 md:col-span-2 row-span-2 bg-white rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="h-full p-4">
-              <h3 className="font-bold text-gray-900 mb-3 text-sm">Most popular around the world</h3>
-              <div className="space-y-2">
-                {[
-                  { name: "Rotaract Program", desc: "Youth leadership development" },
-                  { name: "End Polio Campaign", desc: "Global health initiative" },
-                  { name: "Clean Water Projects", desc: "Community water access" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gray-200 rounded"></div>
-                    <div className="flex-1">
-                      <div className="text-xs font-medium text-gray-900">{item.name}</div>
-                      <div className="text-xs text-gray-500">{item.desc}</div>
-                    </div>
+        {/* Uniform Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="bg-white rounded-[32px] overflow-hidden shadow-lg group cursor-pointer relative h-[380px] md:h-[400px]"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: `url(${service.image})` }}
+              />
+              {/* Vibrant Gradient Overlay matching reference */}
+              <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-90 mix-blend-multiply`} />
+              <div className={`absolute inset-0 bg-gradient-to-t ${service.color} opacity-90`} />
+              
+              <div className="relative h-full p-6 md:p-8 flex flex-col justify-end text-white z-10">
+                {/* Title */}
+                <h3 className="w-full text-center text-3xl md:text-3xl font-semibold tracking-tight mb-6 leading-tight truncate">
+                  {service.title}
+                </h3>
+                
+                {/* Footer Details */}
+                <div className="flex items-center gap-4 mt-auto border-t border-white/20 pt-4">
+                  {/* Calendar Box */}
+                  <div className="bg-white/20 backdrop-blur-sm rounded-2xl w-14 h-16 flex flex-col items-center justify-center shrink-0">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-white/90">{service.date.month}</span>
+                    <span className="text-xl font-bold leading-none my-0.5">{service.date.day}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-white/90">{service.date.dayOfWeek}</span>
                   </div>
-                ))}
+                  
+                  {/* Location Info */}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-sm md:text-base truncate">{service.location}</p>
+                    <p className="text-xs md:text-sm text-white/80 truncate">{service.address}</p>
+                  </div>
+                  
+                  {/* Time */}
+                  <div className="text-right shrink-0">
+                    <p className="text-sm font-semibold whitespace-pre-line text-right">{service.time}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Right side - Great for families */}
-          <motion.div
-            custom={11}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="col-span-12 md:col-span-3 row-span-2 md:row-span-3 bg-gray-900 rounded-2xl overflow-hidden shadow-lg group cursor-pointer relative"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: 'url(https://picsum.photos/400/600?random=307)' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-            <div className="relative h-full p-6 flex flex-col justify-between text-white">
-              <div className="flex items-center gap-2 text-sm">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span>Community Focus</span>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-2">Family Programs</h3>
-                <p className="text-white/80 text-sm">Building stronger families and communities together</p>
-              </div>
-            </div>
-          </motion.div>
-
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

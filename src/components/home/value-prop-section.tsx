@@ -19,72 +19,92 @@ import {
 } from "lucide-react";
 import Section from "./section";
 
-// Reusable Card Component
+function PinIcon() {
+  return (
+    <svg
+      className="destination-card__pin"
+      width="31"
+      height="31"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 21C12 21 19 14.8 19 8.8C19 4.94 15.87 2 12 2C8.13 2 5 4.94 5 8.8C5 14.8 12 21 12 21Z"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle
+        cx="12"
+        cy="8.5"
+        r="2.5"
+        stroke="currentColor"
+        strokeWidth="2.2"
+      />
+    </svg>
+  );
+}
+
+// Reusable Card Component precisely matching reference image 16:9 progressive blur style
 const ValueCard = ({
-  number,
-  icon: Icon,
+  city,
   title,
   description,
   imageUrl,
   aiHint,
 }: {
-  number: string;
-  icon: React.ElementType;
+  city: string;
   title: string;
   description: string;
   imageUrl: string;
   aiHint: string;
 }) => (
-  <motion.div
+  <motion.article
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.7 }}
-    className="relative rounded-xl overflow-hidden p-6 md:p-8 flex flex-col justify-between h-[450px] bg-secondary group"
+    className="destination-card group"
   >
-    {/* Top Row: Number + Icon Button */}
-    <div className="relative z-10">
-      <div className="flex justify-between items-start">
-        <span className="text-sm font-bold bg-background/50 text-foreground py-1 px-3 rounded-full backdrop-blur-sm">
-          {`0${number}/`}
-        </span>
-        <Button
-          size="icon"
-          variant="outline"
-          className="bg-background/50 backdrop-blur-sm rounded-full h-10 w-10 transition-transform group-hover:scale-110 group-hover:rotate-45"
-        >
-          <ArrowUpRight className="h-5 w-5" />
-        </Button>
-      </div>
-
-      {/* Icon + Title + Description */}
-      <div className="absolute bottom-28 left-6 md:left-8">
-        <Icon className="h-10 w-10 text-primary mb-3" />
-        <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-sm text-white/80 max-w-[250px]">{description}</p>
-      </div>
-    </div>
-
-    {/* Explore Button */}
-    <div className="relative z-10">
-      <Button
-        variant="secondary"
-        className="rounded-full bg-background/80 backdrop-blur-sm"
-      >
-        Explore <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
-    </div>
-
-    {/* Background Image */}
+    {/* Background photograph */}
     <Image
+      className="destination-card__image"
       src={imageUrl}
       alt={title}
       fill
-      className="object-cover transition-transform duration-500 group-hover:scale-105"
+      draggable={false}
       data-ai-hint={aiHint}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-  </motion.div>
+
+    {/* Large destination / keyword text sitting behind the image/content */}
+    <div className="destination-card__city" aria-hidden="true">
+      {city}
+    </div>
+
+    {/* Progressive blur layers */}
+    <div className="destination-card__blur destination-card__blur--1" />
+    <div className="destination-card__blur destination-card__blur--2" />
+    <div className="destination-card__blur destination-card__blur--3" />
+
+    {/* Soft bottom fade */}
+    <div className="destination-card__bottom-fade" />
+
+    {/* Foreground location information */}
+    <div className="destination-card__content">
+      <div className="destination-card__title-row">
+        <PinIcon />
+        <span className="destination-card__landmark">
+          {title}
+        </span>
+      </div>
+
+      <div className="destination-card__country">
+        {description}
+      </div>
+    </div>
+  </motion.article>
 );
 
 // Mobile App Mockup Component
@@ -121,26 +141,24 @@ const MobileAppMockup = () => (
 
 // Main Hero Content Component
 const MainHeroContent = () => (
-  <div className="relative bg-white rounded-3xl p-6 md:p-8 shadow-lg min-h-[400px]">
+  <div className="relative bg-white rounded-3xl p-6 md:p-8 shadow-lg min-h-[400px] flex flex-col items-center text-center">
     {/* Main Tagline */}
     <div className="mb-6">
       <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mr-2 bg-blue-50 mb-2">Serve.</span>
-        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mr-2 bg-blue-50 mb-2">Connect.</span>
-        <ArrowRight className="inline h-6 w-6 md:h-8 md:w-8 ml-2 text-blue-600" />
+        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mx-1 md:mx-2 bg-blue-50 mb-2">Serve.</span>
+        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mx-1 md:mx-2 bg-blue-50 mb-2">Connect.</span>
       </h1>
       <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mr-2 bg-blue-50 mb-2">Transform.</span>
-        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 bg-blue-50">Together.</span>
+        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mx-1 md:mx-2 bg-blue-50 mb-2">Transform.</span>
+        <span className="inline-block border-2 border-blue-600 rounded-full px-4 py-2 mx-1 md:mx-2 bg-blue-50 mb-2">Together.</span>
       </h1>
     </div>
 
     {/* Features List */}
-    <div className="space-y-2 mb-6">
+    <div className="space-y-2 mb-6 flex flex-col items-center">
       <div className="flex items-center gap-2">
         <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
         <span className="text-sm">Community-driven humanitarian projects across East Africa</span>
-        <ArrowRight className="h-4 w-4 text-blue-600" />
       </div>
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-500" />
@@ -149,27 +167,23 @@ const MainHeroContent = () => (
       <div className="flex items-center gap-2">
         <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
         <span className="text-sm">Rotary International Network Impact</span>
-        <ArrowUpRight className="h-4 w-4 text-blue-600" />
       </div>
     </div>
 
     {/* Action Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
       <Button className="rounded-full bg-blue-600 text-white px-6 hover:bg-blue-700">Become a Rotarian</Button>
       <Button variant="outline" className="rounded-full px-6 border-blue-600 text-blue-600 hover:bg-blue-50">
-        Our Projects <ArrowRight className="ml-2 h-4 w-4" />
+        Our Projects
       </Button>
     </div>
 
     {/* Bottom Message */}
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 justify-center">
       <div className="flex items-center gap-2 bg-blue-50 rounded-full px-4 py-2 border border-blue-200">
         <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
           <span className="text-white text-xs font-bold">R</span>
         </div>
-        <Button size="icon" className="w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-700">
-          <ArrowUpRight className="h-4 w-4 text-white" />
-        </Button>
         <span className="text-xs md:text-sm font-medium">Service Above Self - People of Action 🌍</span>
       </div>
     </div>
@@ -216,36 +230,33 @@ export default function RotaryImpactSection() {
           {/* Rotary Service Cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ValueCard
-              number="1"
-              icon={Droplets}
+              city="WATER"
               title="Water & Sanitation"
-              description="Providing clean water access and sanitation facilities to underserved communities along the Nile basin."
+              description="Clean water & sanitation along the Nile."
               imageUrl="https://picsum.photos/800/600?random=41"
               aiHint="water project"
             />
             <ValueCard
-              number="2"
-              icon={GraduationCap}
+              city="EDUCATION"
               title="Education & Literacy"
-              description="Supporting schools, scholarships, and educational programs that unlock potential in young minds."
+              description="Schools, scholarships & youth literacy."
               imageUrl="https://picsum.photos/800/600?random=42"
               aiHint="education support"
             />
             <ValueCard
-              number="3"
-              icon={HeartPulse}
+              city="HEALTH"
               title="Healthcare & Wellness"
-              description="Delivering medical care, health education, and wellness programs to strengthen communities."
+              description="Medical care & community health outreach."
               imageUrl="https://picsum.photos/800/600?random=43"
               aiHint="healthcare outreach"
             />
           </div>
 
           {/* Rotary Focus Tags */}
-          <div className="flex flex-wrap gap-2 md:gap-4 mt-8 justify-center md:justify-start">
-            <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm">Rotary Foundation Grants</span>
-            <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm">Community-Led Solutions</span>
-            <span className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm">International Partnerships</span>
+          <div className="flex flex-wrap gap-3 mt-8 justify-center">
+            <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">Rotary Foundation Grants</span>
+            <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">Community-Led Solutions</span>
+            <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">International Partnerships</span>
           </div>
         </div>
       </div>

@@ -1,80 +1,75 @@
 
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import Section from "./section";
-import { Button } from "../ui/button";
+import { LeaderCarousel, LeaderTestimonial } from "@/components/ui/profile-card-testimonial-carousel";
 
-const leaders = [
+const rotaryLeaders: LeaderTestimonial[] = [
   {
-    name: "Benyamin Rolocov",
-    role: "President",
-    imageUrl: "https://picsum.photos/400/500?random=51",
-    aiHint: "man portrait"
+    name: "Martin Asingwire",
+    title: "Club President (2025-2026)",
+    description:
+      "Leading with passion and dedication to empower local communities along the Nile basin through impactful Rotary service, clean water initiatives, and sustainable community skilling.",
+    imageUrl:
+      "https://picsum.photos/600/600?random=51",
+    linkedinUrl: "https://linkedin.com",
+    twitterUrl: "https://twitter.com",
+    githubUrl: "https://github.com",
   },
   {
-    name: "Alexandra Chabon",
-    role: "CEO",
-    imageUrl: "https://picsum.photos/400/500?random=52",
-    aiHint: "woman portrait"
+    name: "Grace Namubiru",
+    title: "President-Elect",
+    description:
+      "Committed to advancing our club's strategic vision, fostering international partnerships, and expanding youth empowerment and educational literacy programs across Jinja and beyond.",
+    imageUrl:
+      "https://picsum.photos/600/600?random=52",
+    linkedinUrl: "https://linkedin.com",
+    twitterUrl: "https://twitter.com",
+    githubUrl: "https://github.com",
   },
   {
-    name: "Rezchnag Shibana",
-    role: "Financial Officer",
-    imageUrl: "https://picsum.photos/400/500?random=53",
-    aiHint: "man portrait"
+    name: "Julius Okello",
+    title: "Club Secretary",
+    description:
+      "Ensuring seamless governance, transparent communication, and meticulous coordination across all community service projects and club fellowships.",
+    imageUrl:
+      "https://picsum.photos/600/600?random=53",
+    linkedinUrl: "https://linkedin.com",
+    twitterUrl: "https://twitter.com",
+    githubUrl: "https://github.com",
   },
   {
-    name: "Zhang Chiano",
-    role: "Sergeant at Arms",
-    imageUrl: "https://picsum.photos/400/500?random=54",
-    aiHint: "man portrait"
+    name: "Dr. Sarah Akello",
+    title: "Community Service Director",
+    description:
+      "Spearheading vital healthcare outreaches, maternal child health camps, and sustainable environmental conservation efforts along the Source of the Nile.",
+    imageUrl:
+      "https://picsum.photos/600/600?random=54",
+    linkedinUrl: "https://linkedin.com",
+    twitterUrl: "https://twitter.com",
+    githubUrl: "https://github.com",
   },
 ];
 
-const LeaderCard = ({ name, role, imageUrl, aiHint, index }: (typeof leaders)[0] & { index: number }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="flex flex-col group"
-    >
-        <div className="relative w-full overflow-hidden rounded-xl bg-secondary aspect-[4/5]">
-            <Image
-                src={imageUrl}
-                alt={`Portrait of ${name}`}
-                fill
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                data-ai-hint={aiHint}
-            />
-             <Button size="icon" variant="outline" className="absolute top-4 right-4 bg-background/50 backdrop-blur-sm rounded-full h-10 w-10 transition-transform group-hover:scale-110 group-hover:rotate-45">
-                <ArrowUpRight className="h-5 w-5" />
-            </Button>
-        </div>
-        <div className="mt-4 text-left">
-            <h3 className="text-lg font-bold uppercase tracking-wide">{name}</h3>
-            <p className="text-sm text-muted-foreground">{role}</p>
-        </div>
-    </motion.div>
-);
-
-
 export default function LeadersSection() {
     return (
-        <Section className="bg-secondary">
+        <Section className="bg-secondary/50 py-20">
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">Leaders</h2>
+                <div className="text-center max-w-2xl mx-auto mb-16">
+                    <span className="text-xs font-bold uppercase tracking-widest text-sky-600 dark:text-sky-400 bg-sky-100 dark:bg-sky-950 py-1.5 px-4 rounded-full mb-3 inline-block">
+                        Club Leadership
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2">
+                        Meet Our Leaders
+                    </h2>
+                    <p className="text-slate-600 dark:text-slate-400 mt-3 text-base">
+                        Dedicated Rotarians steering our mission of service above self along the Source of the Nile.
+                    </p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-                    {leaders.map((leader, index) => (
-                        <LeaderCard key={leader.name} {...leader} index={index} />
-                    ))}
-                </div>
+                
+                <LeaderCarousel leaders={rotaryLeaders} />
             </div>
         </Section>
     );
 }
+

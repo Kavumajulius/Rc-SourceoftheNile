@@ -52,21 +52,25 @@ export default function Header() {
         "sticky top-0 z-50 w-full transition-all duration-300",
         hasScrolled ? "border-b bg-background/80 backdrop-blur-sm" : "bg-background"
       )}>
-      <div className="container flex h-24 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <LogoIcon className="h-8 w-8 text-primary" />
-          <span className="font-bold sm:inline-block text-lg">
-            RC Source of the Nile
-          </span>
-        </Link>
+      <div className="container grid grid-cols-3 h-24 items-center">
+        <div className="flex items-center justify-start">
+          <Link href="/" className="flex items-center space-x-2">
+            <LogoIcon className="h-8 w-8 text-primary" />
+            <span className="font-bold sm:inline-block text-lg truncate">
+              RC Source of the Nile
+            </span>
+          </Link>
+        </div>
         
-        <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map(link => (
-                <NavLink key={link.href} href={link.href} label={link.label} />
-            ))}
-        </nav>
+        <div className="flex items-center justify-center">
+          <nav className="hidden md:flex items-center gap-6">
+              {navLinks.map(link => (
+                  <NavLink key={link.href} href={link.href} label={link.label} />
+              ))}
+          </nav>
+        </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-end gap-4">
           <Button asChild className="rounded-full font-bold bg-accent-green text-white hover:bg-green-500 px-6 hidden md:flex">
               <Link href="/photo-tool">
                   Photo Tool

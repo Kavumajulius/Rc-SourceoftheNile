@@ -1,8 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+import StickyNavbar from '@/components/layout/sticky-navbar';
 
 export const metadata: Metadata = {
   title: 'RC Source of the Nile',
@@ -23,7 +23,7 @@ export default function RootLayout({
       </head>
       <body className="font-body bg-background text-foreground antialiased">
         <div className="flex min-h-screen flex-col">
-          <Header />
+          <StickyNavbar />
           <main className="flex-1">
             {children}
           </main>
