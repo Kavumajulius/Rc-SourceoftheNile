@@ -18,18 +18,18 @@ export default function StickyNavbar() {
 
   return (
     <div className="sticky top-4 z-50 container mx-auto px-4 max-w-7xl pt-2 pb-2">
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full shadow-2xl border border-sky-100 px-6 py-3.5 grid grid-cols-3 items-center">
+      <div className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full shadow-2xl border border-zinc-200 px-6 py-3.5 grid grid-cols-3 items-center">
         {/* Left Logo & Club Text */}
         <div className="flex items-center justify-start">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-[#0369A1] flex items-center justify-center text-[#F0F9FF] font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
               R
             </div>
             <div>
-              <span className="font-extrabold tracking-wider text-xs md:text-sm text-[#0C4A6E] block">
+              <span className="font-extrabold tracking-wider text-xs md:text-sm text-black block">
                 Rotary Club Source of the Nile
               </span>
-              <span className="text-[9px] md:text-[10px] text-[#0369A1]/75 tracking-widest uppercase block">
+              <span className="text-[9px] md:text-[10px] text-zinc-500 tracking-widest uppercase block">
                 sourceofthenile.org
               </span>
             </div>
@@ -38,7 +38,7 @@ export default function StickyNavbar() {
 
         {/* Navigation Tabs (Centered in the navbar) */}
         <div className="hidden lg:flex items-center justify-center">
-          <nav className="flex items-center gap-6 bg-sky-50/70 px-6 py-2 rounded-full border border-sky-100">
+          <nav className="flex items-center gap-6 bg-zinc-100/80 px-6 py-2 rounded-full border border-zinc-200">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -46,8 +46,8 @@ export default function StickyNavbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "text-[11px] font-bold tracking-wider uppercase transition-colors hover:text-[#0284C7]",
-                    isActive ? "text-[#0284C7] underline underline-offset-4" : "text-[#0C4A6E]"
+                    "text-[11px] font-bold tracking-wider uppercase transition-colors hover:text-black",
+                    isActive ? "text-black underline underline-offset-4 font-black" : "text-zinc-700"
                   )}
                 >
                   {link.label}
@@ -61,11 +61,11 @@ export default function StickyNavbar() {
         <div className="flex items-center justify-end">
           <Link
             href="/events"
-            className="text-[10px] font-bold tracking-wider uppercase bg-[#0284C7] text-white px-4 py-2 rounded-full shadow lg:hidden"
+            className="text-[10px] font-bold tracking-wider uppercase bg-black text-white px-4 py-2 rounded-full shadow lg:hidden"
           >
             Menu
           </Link>
-          <div className="hidden lg:block text-xs font-semibold text-[#0369A1]">
+          <div className="hidden lg:block text-xs font-semibold text-black">
             District 9213
           </div>
         </div>
@@ -73,3 +73,4 @@ export default function StickyNavbar() {
     </div>
   );
 }
+

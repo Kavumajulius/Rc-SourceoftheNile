@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -84,6 +84,13 @@ export function LeaderCarousel({ leaders = defaultLeaders, className }: LeaderCa
     setCurrentIndex(
       (index) => (index - 1 + leaders.length) % leaders.length
     );
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % leaders.length);
+    }, 10000);
+    return () => clearInterval(timer);
+  }, [leaders.length]);
 
   const currentLeader = leaders[currentIndex];
 

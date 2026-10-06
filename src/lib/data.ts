@@ -54,7 +54,7 @@ export const pastPresidents: President[] = [
         term: "2021-2022",
         bio: "Theme: Serve to Change Lives. Guided the club through post-pandemic community recovery programs.",
         achievements: ["Serve to Change Lives theme leadership", "Economic empowerment programs", "Secured grant funding"],
-        imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
@@ -70,7 +70,7 @@ export const pastPresidents: President[] = [
         term: "2019-2020",
         bio: "Theme: Rotary Connects the World. Promoted environmental conservation and youth leadership.",
         achievements: ["Rotary Connects the World theme leadership", "Nile riverbank cleanup", "Supported Interact clubs"],
-        imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
@@ -246,7 +246,7 @@ export const pastPresidents: President[] = [
         term: "1997-1998",
         bio: "Theme: Show Rotary Cares. Focused on youth development and educational scholarship funds.",
         achievements: ["Show Rotary Cares leadership", "High school scholarships awarded"],
-        imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
@@ -262,7 +262,7 @@ export const pastPresidents: President[] = [
         term: "1995-1996",
         bio: "Theme: Act with Integrity – Serve with Love – Work for Peace. Championed women empowerment.",
         achievements: ["Women empowerment center established", "Startup kits provided"],
-        imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
@@ -270,7 +270,7 @@ export const pastPresidents: President[] = [
         term: "1994-1995",
         bio: "Theme: Be A Friend. Expanded club community service scope and district partnerships.",
         achievements: ["Be A Friend theme leadership", "Rural health clinic support"],
-        imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
@@ -294,7 +294,7 @@ export const pastPresidents: President[] = [
         term: "1991-1992",
         bio: "Theme: Look Beyond Yourself. Strengthened club fellowship and health outreaches.",
         achievements: ["Health camps", "Cultural fellowship nights"],
-        imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
         aiHint: "man portrait"
     },
     {
